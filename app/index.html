@@ -1,0 +1,1724 @@
+<meta charset="utf-8">
+<title>CiadoChurras — Curitiba e região</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#A82C22">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CiadoChurras">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --papel:#FAF8F4; --papel-2:#FFFFFF; --linha:#E2DCD2; --linha-forte:#CFC7B9;
+  --tinta:#1C1A16; --tinta-2:#5F594E; --tinta-3:#8A8377;
+  --carmim:#A82C22; --carmim-suave:#F3E2DF;
+  --verde:#2C6B4F; --verde-suave:#E2EDE6;
+  --mostarda:#9A6B12; --mostarda-suave:#F6EBD6;
+  --sombra:0 1px 2px rgba(28,26,22,.06), 0 8px 24px -16px rgba(28,26,22,.25);
+  --r:10px;
+  --fd:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --fb:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --fm:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --papel:#151412; --papel-2:#1E1C19; --linha:#2E2B26; --linha-forte:#413C34;
+    --tinta:#F2EEE7; --tinta-2:#B5AEA2; --tinta-3:#8B8477;
+    --carmim:#E4685A; --carmim-suave:#3A211D;
+    --verde:#6FBF92; --verde-suave:#1C2C24;
+    --mostarda:#DCA63F; --mostarda-suave:#2E2413;
+    --sombra:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#151412; --papel-2:#1E1C19; --linha:#2E2B26; --linha-forte:#413C34;
+  --tinta:#F2EEE7; --tinta-2:#B5AEA2; --tinta-3:#8B8477;
+  --carmim:#E4685A; --carmim-suave:#3A211D;
+  --verde:#6FBF92; --verde-suave:#1C2C24;
+  --mostarda:#DCA63F; --mostarda-suave:#2E2413;
+  --sombra:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--fb);font-size:15px;line-height:1.45}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:18px;padding-block:0 56px}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--carmim);outline-offset:2px;border-radius:6px}
+
+/* ---------- topo ---------- */
+header.topo{border-bottom:1px solid var(--linha);background:var(--papel);position:sticky;top:0;z-index:20}
+.marca{display:flex;align-items:center;gap:12px;min-width:0}
+.marca img{width:52px;height:52px;border-radius:12px;flex:none;box-shadow:var(--sombra)}
+.topo-in{max-width:1180px;margin:0 auto;padding-inline:18px;padding-block:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between}
+h1{font-family:var(--fd);font-weight:800;font-size:clamp(20px,3vw,28px);letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 span{color:var(--carmim)}
+.sub{margin:4px 0 0;color:var(--tinta-2);font-size:13.5px}
+.sub b{font-weight:600;color:var(--tinta)}
+.acoes{display:flex;gap:8px;align-items:center}
+.btn{background:var(--papel-2);border:1px solid var(--linha-forte);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:13.5px;font-weight:500}
+.btn:hover{border-color:var(--tinta-3)}
+.btn-cheio{background:var(--carmim);border-color:var(--carmim);color:#fff}
+.btn-cheio:hover{filter:brightness(1.08)}
+
+/* ---------- busca e filtros ---------- */
+.painel{display:grid;grid-template-columns:270px 1fr;gap:22px;margin-top:22px;align-items:start}
+@media (max-width:860px){.painel{grid-template-columns:1fr}}
+.filtros{background:var(--papel-2);border:1px solid var(--linha);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:16px;position:sticky;top:88px}
+@media (max-width:860px){.filtros{position:static}}
+.grupo{display:flex;flex-direction:column;gap:8px}
+.rot{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+input[type=search],select{width:100%;padding:9px 11px;border:1px solid var(--linha-forte);border-radius:8px;background:var(--papel);color:var(--tinta);font:inherit}
+input[type=search]{font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--linha-forte);background:var(--papel);border-radius:999px;padding:5px 11px;font-size:13px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.chip.m0[aria-pressed="true"]{background:var(--carmim);border-color:var(--carmim);color:#fff}
+.check{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--tinta-2)}
+.limpar{align-self:flex-start;background:none;border:none;color:var(--carmim);cursor:pointer;font-size:13px;padding:0;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- resultados ---------- */
+.barra{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.uso{display:inline-flex;border:1px solid var(--linha-forte);border-radius:999px;padding:3px;gap:3px;background:var(--papel)}
+.uso button{border:none;background:none;border-radius:999px;padding:7px 16px;font-size:13.5px;font-weight:600;color:var(--tinta-2);cursor:pointer;white-space:nowrap;font-family:inherit}
+.uso button[aria-pressed="true"]{background:var(--carmim);color:#fff}
+@media (max-width:560px){.uso{width:100%}.uso button{flex:1}}
+.contagem{font-size:13.5px;color:var(--tinta-2)}
+.contagem b{color:var(--tinta);font-family:var(--fm);font-weight:600}
+.lista{display:flex;flex-direction:column;border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;background:var(--papel-2)}
+.item{display:grid;grid-template-columns:1fr auto;gap:10px 18px;padding:12px 14px;border-bottom:1px solid var(--linha);cursor:pointer;text-align:left;background:none;border-left:0;border-right:0;border-top:0;width:100%}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--papel)}
+.nome{font-weight:500;line-height:1.3}
+.meta{margin-top:5px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--tinta-2)}
+.tag{border-radius:5px;padding:2px 7px;font-size:11.5px;font-weight:600;letter-spacing:.02em;border:1px solid transparent;white-space:nowrap}
+.t-merc{background:var(--carmim-suave);color:var(--carmim)}
+.t-cat{background:var(--papel);border-color:var(--linha-forte);color:var(--tinta-2)}
+.t-enc{background:var(--mostarda-suave);color:var(--mostarda)}
+.t-sem{background:var(--papel);border-color:var(--linha-forte);color:var(--tinta-3)}
+.t-menor{background:var(--verde-suave);color:var(--verde)}
+.t-caiu{background:var(--verde-suave);color:var(--verde)}
+.t-subiu{background:var(--carmim-suave);color:var(--carmim)}
+.preco{text-align:right;font-family:var(--fm);white-space:nowrap}
+.preco .v{font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.preco .u{font-size:11.5px;color:var(--tinta-3);display:block;margin-top:2px}
+.vazio{padding:40px 16px;text-align:center;color:var(--tinta-2)}
+.mais{margin:14px auto 0;display:block}
+
+/* ---------- popups ---------- */
+dialog{border:none;padding:0;background:transparent;max-width:min(680px,94vw);width:100%}
+dialog::backdrop{background:rgba(20,18,14,.55);backdrop-filter:blur(2px)}
+.cx{background:var(--papel-2);color:var(--tinta);border:1px solid var(--linha-forte);border-radius:14px;box-shadow:var(--sombra);overflow:hidden;max-height:86vh;display:flex;flex-direction:column}
+.cx-topo{padding:18px 20px 14px;border-bottom:1px solid var(--linha);display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.cx-topo h2{font-family:var(--fd);font-weight:800;font-size:20px;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.cx-topo p{margin:5px 0 0;font-size:13px;color:var(--tinta-2)}
+.x{background:none;border:1px solid var(--linha-forte);border-radius:8px;width:30px;height:30px;cursor:pointer;flex:0 0 auto;line-height:1}
+.cx-corpo{padding:16px 20px 20px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.destaque{border:1px solid var(--linha);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center}
+.destaque.ouro{border-color:var(--mostarda);background:var(--mostarda-suave)}
+.destaque .et{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--tinta-3);font-weight:600}
+.destaque .nm{font-weight:500;margin-top:3px;line-height:1.3}
+.destaque .on{font-size:12.5px;color:var(--tinta-2);margin-top:3px}
+.destaque .pr{font-family:var(--fm);font-weight:600;font-size:18px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
+.cmp th{text-align:left;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);padding:0 8px 6px 0;border-bottom:1px solid var(--linha)}
+.cmp td{padding:7px 8px 7px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+.cmp td:last-child,.cmp th:last-child{text-align:right;padding-right:0;font-family:var(--fm);font-variant-numeric:tabular-nums}
+.cmp tr.best td{color:var(--verde);font-weight:600}
+.rolagem{overflow-x:auto}
+.nota{font-size:12.5px;color:var(--tinta-2);line-height:1.5}
+.rodape{margin-top:28px;padding-top:16px;border-top:1px solid var(--linha);font-size:12.5px;color:var(--tinta-3);display:flex;flex-wrap:wrap;gap:6px 16px}
+@media (prefers-reduced-motion:no-preference){
+  dialog[open]{animation:sobe .18s ease-out}
+  @keyframes sobe{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+}
+
+/* ---------- dividir a conta ---------- */
+.conta-topo{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--papel);border:1px solid var(--linha);border-radius:12px;padding:16px}
+.conta-valor{font-family:var(--fm);font-size:clamp(28px,8vw,38px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.conta-rot{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+.passo{display:flex;align-items:center;gap:8px}
+.passo input{text-align:center;font-family:var(--fm);font-size:17px;width:70px}
+.passo button{width:38px;height:38px;border-radius:10px;border:1px solid var(--linha-forte);background:var(--papel-2);color:inherit;font-size:19px;line-height:1;cursor:pointer;flex:none}
+.passo button:hover{border-color:var(--tinta-3)}
+.linha-pessoa{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.linha-pessoa .campo{flex:1 1 118px;min-width:0}
+.linha-pessoa .campo-nome{flex:2 1 150px}
+.acerto{margin-top:14px;background:var(--verde-suave);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.acerto .conta-rot{color:var(--verde)}
+.acerto-linha{font-size:14.5px;color:var(--verde);font-weight:500}
+.cmp td.receber{color:var(--verde);font-weight:600}
+.linha-pessoa .tirar{width:36px;height:36px;border-radius:9px;border:1px solid var(--linha-forte);background:var(--papel-2);color:var(--tinta-2);cursor:pointer;font-size:15px;line-height:1;flex:none}
+
+.cmp td.dono{width:99%}
+#ctDetalhe .cmp td:not(.dono),#ctDetalhe .cmp th:not(:first-child){white-space:nowrap;text-align:right}
+#ctDetalhe .cmp td.dono{white-space:normal}
+.cmp tr.demais td{color:var(--tinta-2)}
+
+/* ---------- envio de correção / produto novo ---------- */
+[hidden]{display:none!important}
+.t-conf{background:var(--verde-suave);color:var(--verde)}
+.t-parc{background:var(--mostarda-suave);color:var(--mostarda)}
+.acao-env{margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}
+.form{display:flex;flex-direction:column;gap:14px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo input,.campo select,.campo textarea{padding:9px 11px;border:1px solid var(--linha-forte);border-radius:8px;background:var(--papel);color:var(--tinta);font:inherit;width:100%}
+.campo textarea{resize:vertical;min-height:58px}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:520px){.dupla{grid-template-columns:1fr}}
+.bloco{display:flex;flex-direction:column;gap:14px}
+.resumo-env{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;font-size:14px}
+.foto-area{border:1px dashed var(--linha-forte);border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.foto-area img{max-height:200px;max-width:100%;border-radius:8px}
+.dica{font-size:12.5px;color:var(--tinta-3)}
+.aviso{font-size:13.5px;border-radius:8px;padding:10px 12px;line-height:1.4}
+.aviso.erro{background:var(--carmim-suave);color:var(--carmim)}
+.aviso.ok{background:var(--verde-suave);color:var(--verde)}
+.form-rodape{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.btn[disabled]{opacity:.55;cursor:progress}
+</style>
+
+<header class="topo">
+  <div class="topo-in">
+    <div class="marca">
+      <img src="data:image/png;base64,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" alt="CiadoChurras" width="52" height="52">
+      <div>
+      <h1>Cia do <span>Churras</span></h1>
+      <p class="sub">Preços de carne em <b id="nLojas">–</b> lojas de <b id="nMerc">–</b> redes · coleta de <b id="dataColeta">–</b></p>
+      </div>
+    </div>
+    <div class="acoes">
+      <button class="btn" id="btnInstalar" type="button" hidden>Instalar</button>
+      <button class="btn" id="btnTema" type="button">Tema</button>
+      <button class="btn" id="btnConta" type="button">Dividir a conta</button>
+      <button class="btn btn-cheio" id="btnOfertas" type="button">Ofertas do dia</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="painel">
+    <aside class="filtros">
+      <div class="grupo">
+        <label class="rot" for="q">Produto</label>
+        <input type="search" id="q" placeholder="picanha, coxa, lombo…" autocomplete="off">
+      </div>
+      <div class="grupo">
+        <span class="rot">Mercado</span>
+        <div class="chips" id="fMerc"></div>
+      </div>
+      <div class="grupo">
+        <span class="rot">Tipo de carne</span>
+        <div class="chips" id="fCat"></div>
+      </div>
+      <div class="grupo">
+        <label class="rot" for="fLoja">Loja</label>
+        <select id="fLoja"><option value="">Todas as lojas</option></select>
+      </div>
+      <div class="grupo">
+        <label class="rot" for="fOrd">Ordenar por</label>
+        <select id="fOrd">
+          <option value="kg">Preço por kg, do menor</option>
+          <option value="asc">Preço, do menor</option>
+          <option value="desc">Preço, do maior</option>
+          <option value="nome">Nome do produto</option>
+        </select>
+      </div>
+      <div class="grupo">
+        <span class="rot">Mostrar</span>
+        <label class="check"><input type="checkbox" id="fKg"> só preço por quilo</label>
+        <label class="check"><input type="checkbox" id="fOferta"> só ofertas de encarte</label>
+        <label class="check"><input type="checkbox" id="fCaiu"> só quem caiu de preço</label>
+        <label class="check"><input type="checkbox" id="fEstoque" checked> esconder sem estoque</label>
+      </div>
+      <button class="limpar" id="btnLimpar" type="button">Limpar filtros</button>
+      <button class="btn" id="btnNovo" type="button" hidden>+ Adicionar produto que falta</button>
+    </aside>
+
+    <main>
+      <div class="barra">
+        <div class="uso" id="fUso" role="group" aria-label="Tipo de consumo" hidden>
+          <button type="button" data-uso="1" aria-pressed="true">Churrasco</button>
+          <button type="button" data-uso="0" aria-pressed="false">Dia a dia</button>
+        </div>
+        <span class="contagem"><b id="cont">0</b> produtos encontrados</span>
+        <span class="contagem" id="resumoFiltro"></span>
+      </div>
+      <div class="lista" id="lista"></div>
+      <button class="btn mais" id="btnMais" type="button" hidden>Ver mais 100</button>
+      <div class="rodape">
+        <span>Preço por kg calculado pelo peso no nome quando o produto é vendido por embalagem.</span>
+        <span>Ofertas de encarte valem na loja física, na validade indicada.</span>
+      </div>
+    </main>
+  </div>
+</div>
+
+<dialog id="dlgOfertas">
+  <div class="cx">
+    <div class="cx-topo">
+      <div>
+        <h2>Ofertas do dia</h2>
+        <p id="ofSub">Destaques da coleta</p>
+      </div>
+      <button class="x" type="button" data-fechar aria-label="Fechar">✕</button>
+    </div>
+    <div class="cx-corpo" id="ofCorpo"></div>
+  </div>
+</dialog>
+
+<dialog id="dlgProduto">
+  <div class="cx">
+    <div class="cx-topo">
+      <div>
+        <h2 id="pdNome">Produto</h2>
+        <p id="pdSub"></p>
+      </div>
+      <button class="x" type="button" data-fechar aria-label="Fechar">✕</button>
+    </div>
+    <div class="cx-corpo" id="pdCorpo"></div>
+  </div>
+</dialog>
+
+<dialog id="dlgEnvio">
+  <div class="cx">
+    <div class="cx-topo">
+      <div>
+        <h2 id="envTitulo">Corrigir preço</h2>
+        <p id="envSub"></p>
+      </div>
+      <button class="x" type="button" data-fechar aria-label="Fechar">✕</button>
+    </div>
+    <div class="cx-corpo">
+      <form class="form" id="formEnvio">
+        <div class="resumo-env" id="envResumo" hidden></div>
+        <div class="bloco" id="envNovoCampos" hidden>
+          <div class="dupla">
+            <div class="campo"><label class="rot" for="envMerc">Mercado</label><select id="envMerc"></select></div>
+            <div class="campo"><label class="rot" for="envLoja">Loja</label><select id="envLoja"></select></div>
+          </div>
+          <div class="dupla">
+            <div class="campo"><label class="rot" for="envCat">Tipo de carne</label><select id="envCat"></select></div>
+            <div class="campo"><label class="rot" for="envNome">Nome na etiqueta</label><input id="envNome" maxlength="140" placeholder="Picanha bovina peça a vácuo kg"></div>
+          </div>
+        </div>
+        <div class="dupla">
+          <div class="campo"><label class="rot" for="envPreco">Preço da etiqueta</label><input id="envPreco" inputmode="decimal" placeholder="49,90" required></div>
+          <div class="campo"><label class="rot" for="envUn">Vendido por</label><select id="envUn"><option value="kg">quilo (R$/kg)</option><option value="un">unidade ou pacote</option></select></div>
+        </div>
+        <div class="dupla">
+          <div class="campo"><label class="rot" for="envData">Data da etiqueta</label><input type="date" id="envData" required></div>
+          <div class="campo"><label class="rot" for="envPor">Seu nome (opcional)</label><input id="envPor" maxlength="40" placeholder="quem conferiu"></div>
+        </div>
+        <div class="campo"><label class="rot" for="envObs">Observação (opcional)</label><textarea id="envObs" maxlength="300" placeholder="ex.: preço do clube, válido até domingo"></textarea></div>
+        <div class="campo">
+          <span class="rot">Foto da etiqueta · obrigatória</span>
+          <div class="foto-area">
+            <img id="envPrevia" alt="Foto da etiqueta escolhida" hidden>
+            <input type="file" id="envFoto" accept="image/*" capture="environment" hidden>
+            <button class="btn" type="button" id="btnFoto">Tirar ou escolher foto</button>
+            <span class="dica" id="envFotoDica">O preço precisa aparecer legível na foto. Sem ela o envio não é aceito.</span>
+          </div>
+        </div>
+        <div class="aviso erro" id="envErro" hidden></div>
+        <div class="form-rodape">
+          <button class="btn" type="button" data-fechar>Cancelar</button>
+          <button class="btn btn-cheio" type="submit" id="envEnviar">Enviar para aprovação</button>
+        </div>
+      </form>
+      <div id="envOk" hidden>
+        <div class="aviso ok">Enviado para aprovação. Entra no app assim que o admin aprovar.</div>
+        <p class="nota" id="envOkDet"></p>
+        <div class="form-rodape"><button class="btn btn-cheio" type="button" data-fechar>Fechar</button></div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlgConta">
+  <div class="cx">
+    <div class="cx-topo">
+      <div>
+        <h2>Dividir a conta</h2>
+        <p>Quanto cada um paga, com o acerto dos centavos.</p>
+      </div>
+      <button class="x" type="button" data-fechar aria-label="Fechar">✕</button>
+    </div>
+    <div class="cx-corpo">
+      <form class="form" id="formConta">
+        <div class="dupla">
+          <div class="campo">
+            <label class="rot" for="ctTotal">Valor total da conta</label>
+            <input id="ctTotal" inputmode="decimal" placeholder="R$ 0,00" autocomplete="off">
+          </div>
+          <div class="campo">
+            <label class="rot" for="ctPessoas">Pessoas</label>
+            <div class="passo">
+              <button type="button" id="ctMenos" aria-label="Uma pessoa a menos">−</button>
+              <input id="ctPessoas" inputmode="numeric" value="4">
+              <button type="button" id="ctMais" aria-label="Uma pessoa a mais">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="campo">
+          <span class="rot">Quem já pagou ou paga diferente</span>
+          <div class="bloco" id="ctPessoasLista"></div>
+          <button class="btn" type="button" id="ctAdd">+ Alguém paga diferente</button>
+          <span class="dica">Quem adiantou dinheiro no mercado: deixe a cota normal e preencha "já pagou". Meia cota para criança, valor fixo para quem entrou só com a bebida, cota maior para quem bebeu por dois. O resto é dividido igualmente entre os demais.</span>
+        </div>
+
+        <div class="aviso erro" id="ctErro" hidden></div>
+      </form>
+
+      <div id="ctSaida" hidden>
+        <div class="conta-topo">
+          <span class="conta-rot" id="ctRotulo">Cada pessoa paga</span>
+          <span class="conta-valor" id="ctPorPessoa">R$ 0,00</span>
+          <span class="dica" id="ctResumo"></span>
+        </div>
+        <div class="rolagem" id="ctDetalhe" hidden></div>
+        <div class="acerto" id="ctAcerto" hidden></div>
+        <p class="nota" id="ctConfere"></p>
+        <div class="form-rodape">
+          <button class="btn" type="button" id="ctLimpar">Limpar</button>
+          <button class="btn" type="button" id="ctCopiar">Copiar texto</button>
+          <button class="btn btn-cheio" type="button" id="ctImagem">Imagem para o grupo</button>
+        </div>
+        <p class="dica" id="ctImagemAviso" hidden></p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const CHAVE_CACHE = "acougue-cwb-dados";
+const FONTES = ["./dados/latest.json", "./dados-inicial/latest.json"];
+const API = "./api";
+let temApi = false;
+
+// o app só mostra os botões de correção quando a API de envios responde
+async function verApi() {
+  try {
+    const r = await fetch(API + "/ping", { cache: "no-store" });
+    if (!r.ok) return false;
+    const j = await r.json();
+    return !!(j && j.ok && j.envios);
+  } catch (e) { return false; }
+}
+
+// produtos publicados pelos estabelecimentos parceiros
+async function carregarParceiros() {
+  try {
+    const r = await fetch("./dados/parceiros.json", { cache: "no-cache" });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j && Array.isArray(j.produtos)) ? j : null;
+  } catch (e) { return null; }
+}
+
+// correções e produtos já aprovados pelo admin
+async function carregarAjustes() {
+  try {
+    const r = await fetch("./dados/ajustes.json", { cache: "no-cache" });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j && (j.correcoes || j.novos)) ? j : null;
+  } catch (e) { return null; }
+}
+
+async function carregarDados() {
+  for (const url of FONTES) {
+    try {
+      const r = await fetch(url, { cache: "no-cache" });
+      if (!r.ok) continue;
+      const j = await r.json();
+      if (j && j.rows && j.rows.length) {
+        try { localStorage.setItem(CHAVE_CACHE, JSON.stringify(j)); } catch (e) {}
+        return { dados: j, origem: url.includes("inicial") ? "cópia embutida no app" : "servidor" };
+      }
+    } catch (e) {}
+  }
+  try {
+    const guardado = localStorage.getItem(CHAVE_CACHE);
+    if (guardado) return { dados: JSON.parse(guardado), origem: "cache do aparelho" };
+  } catch (e) {}
+  return null;
+}
+
+function falhaAoCarregar() {
+  document.getElementById("lista").innerHTML =
+    '<div class="vazio">Não consegui carregar os preços agora. Abra o app de novo quando tiver internet — depois da primeira vez ele funciona offline.</div>';
+  document.getElementById("cont").textContent = "0";
+}
+
+Promise.all([carregarDados(), carregarAjustes(), carregarParceiros(), verApi()]).then(([res, aj, parc, api]) => {
+  if (!res) return falhaAoCarregar();
+  temApi = api;
+  iniciarApp(res.dados, res.origem, aj, parc);
+});
+
+function iniciarApp(DB, origemDados, ajustes, parceiros) {
+const F = {M:0, L:1, C:2, N:3, P:4, U:5, S:6, O:7, K:8, D:9, CH:10, CF:11};
+// CH: 1 = corte de churrasco, 0 = carne do dia a dia.
+// Dado antigo não tem esse campo; nesse caso o seletor fica escondido e nada é filtrado.
+const linhas = DB.rows;
+const brl = v => "R$ " + v.toFixed(2).replace(".", ",");
+const semAcento = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const pesoNoNome = nome => {
+  let m = /(\d+(?:[.,]\d+)?)\s*kg\b/i.exec(nome);
+  if (m) { const v = parseFloat(m[1].replace(",", ".")); if (v >= 0.05 && v <= 30) return v; }
+  m = /(\d{2,4})\s*g\b/i.exec(nome);
+  if (m) { const v = +m[1] / 1000; if (v >= 0.05 && v <= 5) return v; }
+  return 0;
+};
+const entrada = (arr, v) => { let i = arr.indexOf(v); if (i < 0) { arr.push(v); i = arr.length - 1; } return i; };
+
+// camada por cima da coleta: preços conferidos na loja e produtos enviados pelo pessoal
+function aplicarAjustes() {
+  if (!ajustes) return 0;
+  let n = 0;
+  (ajustes.correcoes || []).forEach(c => {
+    const iL = DB.L.indexOf(c.loja);
+    if (iL < 0) return;
+    const alvo = linhas.find(r => r[F.L] === iL && (c.sku ? r[F.S] === c.sku : r[F.N] === c.produto));
+    if (!alvo) return;
+    // se a coleta do dia já trouxe outro preço, a correção antiga não vale mais
+    if (typeof c.preco_site === "number" && Math.abs(alvo[F.P] - c.preco_site) > 0.005) return;
+    const peso = pesoNoNome(alvo[F.N]);
+    alvo[F.P] = c.preco;
+    alvo[F.U] = entrada(DB.U, c.unidade);
+    alvo[F.K] = c.unidade === "kg" ? c.preco : (peso ? Math.round(c.preco / peso * 100) / 100 : 0);
+    alvo[F.D] = 0;
+    alvo[F.CF] = { d: c.data, por: c.por || "", obs: c.obs || "" };
+    n++;
+  });
+  (ajustes.novos || []).forEach(p => {
+    const peso = pesoNoNome(p.produto);
+    const r = [
+      entrada(DB.M, p.mercado), entrada(DB.L, p.loja), entrada(DB.C, p.categoria),
+      p.produto, p.preco, entrada(DB.U, p.unidade), "", entrada(DB.O, "conferido na loja"),
+      p.unidade === "kg" ? p.preco : (peso ? Math.round(p.preco / peso * 100) / 100 : 0), 0, 1
+    ];
+    r[F.CF] = { d: p.data, por: p.por || "", obs: p.obs || "", novo: true };
+    linhas.push(r);
+    n++;
+  });
+  return n;
+}
+// produtos dos estabelecimentos parceiros: entram como mais um mercado da lista
+function aplicarParceiros() {
+  if (!parceiros || !parceiros.produtos.length) return 0;
+  let n = 0;
+  parceiros.produtos.forEach(p => {
+    if (!p || !p.produto || !(p.preco > 0)) return;
+    const peso = pesoNoNome(p.produto);
+    const r = [
+      entrada(DB.M, p.mercado), entrada(DB.L, p.mercado + " | " + p.loja), entrada(DB.C, p.categoria),
+      p.produto, p.preco, entrada(DB.U, p.unidade), "", entrada(DB.O, "parceiro"),
+      p.unidade === "kg" ? p.preco : (peso ? Math.round(p.preco / peso * 100) / 100 : 0), 0, 1
+    ];
+    r[F.CF] = { d: String(p.atualizado_em || "").slice(0, 10), por: p.mercado, obs: p.descricao || "", parceiro: true };
+    linhas.push(r);
+    n++;
+  });
+  return n;
+}
+const totalAjustes = aplicarAjustes();
+const totalParceiros = aplicarParceiros();
+
+const buscaTxt = linhas.map(r => semAcento(r[F.N]));
+const iEncarte = DB.O.findIndex(o => /encarte/i.test(o));
+const iSemEstoque = DB.O.findIndex(o => /sem estoque/i.test(o));
+
+document.getElementById("dataColeta").textContent = DB.data.split("-").reverse().join("/");
+document.getElementById("nMerc").textContent = DB.M.length;
+document.getElementById("nLojas").textContent = DB.L.length;
+
+// a coleta só passou a separar churrasco de dia a dia depois; com base antiga o campo não vem
+const temUso = linhas.length > 0 && linhas[0].length > F.CH && typeof linhas[0][F.CH] === "number";
+const estado = {q:"", merc:new Set(), cat:new Set(), loja:"", ord:"kg", soKg:false, soOferta:false, soCaiu:false, semEstoque:true, uso:1, limite:100};
+const elUso = document.getElementById("fUso");
+if (temUso) {
+  elUso.hidden = false;
+  elUso.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      estado.uso = +b.dataset.uso;
+      elUso.querySelectorAll("button").forEach(o => o.setAttribute("aria-pressed", o === b));
+      estado.limite = 100; render();
+    };
+  });
+}
+if (DB.anterior) {
+  const s = document.querySelector(".sub");
+  const extra = document.createElement("span");
+  extra.textContent = " · variação vs. " + DB.anterior.split("-").reverse().join("/");
+  s.appendChild(extra);
+}
+
+// ----- filtros -----
+const elMerc = document.getElementById("fMerc"), elCat = document.getElementById("fCat");
+DB.M.forEach((m, i) => {
+  const b = document.createElement("button");
+  b.className = "chip" + (i === 0 ? "" : ""); b.type = "button"; b.textContent = m;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => { estado.merc.has(i) ? estado.merc.delete(i) : estado.merc.add(i); b.setAttribute("aria-pressed", estado.merc.has(i)); estado.limite = 100; render(); };
+  elMerc.appendChild(b);
+});
+DB.C.forEach((c, i) => {
+  const b = document.createElement("button");
+  b.className = "chip"; b.type = "button"; b.textContent = c;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => { estado.cat.has(i) ? estado.cat.delete(i) : estado.cat.add(i); b.setAttribute("aria-pressed", estado.cat.has(i)); estado.limite = 100; render(); };
+  elCat.appendChild(b);
+});
+const elLoja = document.getElementById("fLoja");
+DB.L.forEach((l, i) => { const o = document.createElement("option"); o.value = i; o.textContent = l.replace(" | ", " · "); elLoja.appendChild(o); });
+
+const on = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn);
+on("q", "input", e => { estado.q = semAcento(e.target.value.trim()); estado.limite = 100; render(); });
+on("fLoja", "change", e => { estado.loja = e.target.value; estado.limite = 100; render(); });
+on("fOrd", "change", e => { estado.ord = e.target.value; render(); });
+on("fKg", "change", e => { estado.soKg = e.target.checked; estado.limite = 100; render(); });
+on("fOferta", "change", e => { estado.soOferta = e.target.checked; estado.limite = 100; render(); });
+on("fCaiu", "change", e => { estado.soCaiu = e.target.checked; estado.limite = 100; render(); });
+on("fEstoque", "change", e => { estado.semEstoque = e.target.checked; estado.limite = 100; render(); });
+on("btnMais", "click", () => { estado.limite += 100; render(); });
+on("btnLimpar", "click", () => {
+  estado.q = ""; estado.merc.clear(); estado.cat.clear(); estado.loja = ""; estado.ord = "kg";
+  estado.soKg = false; estado.soOferta = false; estado.soCaiu = false; estado.semEstoque = true; estado.limite = 100;
+  estado.uso = 1;
+  if (temUso) elUso.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.uso === "1"));
+  document.getElementById("fCaiu").checked = false;
+  document.getElementById("q").value = ""; elLoja.value = ""; document.getElementById("fOrd").value = "kg";
+  document.getElementById("fKg").checked = false; document.getElementById("fOferta").checked = false; document.getElementById("fEstoque").checked = true;
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+  render();
+});
+
+// ----- tema -----
+on("btnTema", "click", () => {
+  const escuroAgora = document.documentElement.getAttribute("data-theme") === "dark" ||
+    (!document.documentElement.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.setAttribute("data-theme", escuroAgora ? "light" : "dark");
+});
+
+// ----- seleção e ordenação -----
+function filtrar() {
+  const q = estado.q;
+  const out = [];
+  for (let i = 0; i < linhas.length; i++) {
+    const r = linhas[i];
+    if (q && !buscaTxt[i].includes(q)) continue;
+    if (estado.merc.size && !estado.merc.has(r[F.M])) continue;
+    if (estado.cat.size && !estado.cat.has(r[F.C])) continue;
+    if (estado.loja !== "" && r[F.L] !== +estado.loja) continue;
+    if (estado.soKg && !r[F.K]) continue;
+    if (estado.soOferta && r[F.O] !== iEncarte) continue;
+    if (estado.soCaiu && !(r[F.D] < 0)) continue;
+    if (estado.semEstoque && r[F.O] === iSemEstoque) continue;
+    if (temUso && (r[F.CH] === 0 ? 0 : 1) !== estado.uso) continue;
+    out.push(r);
+  }
+  const ord = estado.ord;
+  out.sort((a, b) =>
+    ord === "asc" ? a[F.P] - b[F.P] :
+    ord === "desc" ? b[F.P] - a[F.P] :
+    ord === "nome" ? a[F.N].localeCompare(b[F.N], "pt-BR") :
+    (a[F.K] || 1e9) - (b[F.K] || 1e9) || a[F.P] - b[F.P]);
+  return out;
+}
+
+function render() {
+  const res = filtrar();
+  document.getElementById("cont").textContent = res.length.toLocaleString("pt-BR");
+  const partes = [];
+  if (estado.merc.size) partes.push([...estado.merc].map(i => DB.M[i]).join(", "));
+  if (estado.cat.size) partes.push([...estado.cat].map(i => DB.C[i]).join(", "));
+  if (estado.loja !== "") partes.push(DB.L[+estado.loja].split(" | ")[1]);
+  document.getElementById("resumoFiltro").textContent = partes.join(" · ");
+
+  const lista = document.getElementById("lista");
+  lista.textContent = "";
+  if (!res.length) {
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Nenhum produto com esses filtros. Tente outro termo ou limpe os filtros.";
+    lista.appendChild(v);
+    if (temApi) {
+      const b = document.createElement("button");
+      b.className = "btn"; b.type = "button"; b.style.margin = "0 auto 20px"; b.style.display = "block";
+      b.textContent = "Adicionar um produto que falta";
+      b.onclick = () => abrirEnvio("novo", null);
+      lista.appendChild(b);
+    }
+    document.getElementById("btnMais").hidden = true;
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  res.slice(0, estado.limite).forEach(r => frag.appendChild(itemEl(r)));
+  lista.appendChild(frag);
+  const btn = document.getElementById("btnMais");
+  btn.hidden = res.length <= estado.limite;
+  btn.textContent = "Ver mais " + Math.min(100, res.length - estado.limite);
+}
+
+function itemEl(r) {
+  const b = document.createElement("button");
+  b.className = "item"; b.type = "button";
+  b.onclick = () => abrirProduto(r);
+
+  const esq = document.createElement("div");
+  const nm = document.createElement("div");
+  nm.className = "nome"; nm.textContent = r[F.N];
+  const meta = document.createElement("div");
+  meta.className = "meta";
+  meta.appendChild(tag(DB.M[r[F.M]], "t-merc"));
+  const loja = document.createElement("span");
+  loja.textContent = DB.L[r[F.L]].split(" | ")[1];
+  meta.appendChild(loja);
+  meta.appendChild(tag(DB.C[r[F.C]], "t-cat"));
+  if (r[F.O] === iEncarte) meta.appendChild(tag("encarte", "t-enc"));
+  if (r[F.O] === iSemEstoque) meta.appendChild(tag("sem estoque", "t-sem"));
+  if (r[F.CF] && r[F.CF].parceiro) meta.appendChild(tag("parceiro", "t-parc"));
+  else if (r[F.CF]) meta.appendChild(tag((r[F.CF].novo ? "enviado " : "conferido ") + diaMes(r[F.CF].d), "t-conf"));
+  if (r[F.D] <= -5) meta.appendChild(tag("caiu " + Math.abs(r[F.D]).toFixed(0).replace(".", ",") + "%", "t-caiu"));
+  else if (r[F.D] >= 5) meta.appendChild(tag("subiu " + r[F.D].toFixed(0) + "%", "t-subiu"));
+  esq.append(nm, meta);
+
+  const dir = document.createElement("div");
+  dir.className = "preco";
+  const v = document.createElement("span");
+  v.className = "v"; v.textContent = brl(r[F.P]);
+  const u = document.createElement("span");
+  u.className = "u";
+  u.textContent = r[F.U] === iKg() ? "por kg" : (r[F.K] ? brl(r[F.K]) + " / kg" : "por unidade");
+  dir.append(v, u);
+
+  b.append(esq, dir);
+  return b;
+}
+function iKg() { return DB.U.indexOf("kg"); }
+function diaMes(d) { return String(d || "").slice(8, 10) + "/" + String(d || "").slice(5, 7); }
+function tag(txt, cls) { const s = document.createElement("span"); s.className = "tag " + cls; s.textContent = txt; return s; }
+
+// ----- popup do produto: mesmo produto nas outras lojas -----
+const dlgProduto = document.getElementById("dlgProduto");
+function abrirProduto(r) {
+  document.getElementById("pdNome").textContent = r[F.N];
+  const base = semAcento(r[F.N]);
+  let iguais = linhas.filter(x => semAcento(x[F.N]) === base);
+  let modo = "mesmo produto";
+  if (iguais.length < 2) {
+    const chave = palavrasChave(r[F.N]);
+    iguais = linhas.filter(x => x[F.C] === r[F.C] && chave.every(p => semAcento(x[F.N]).includes(p)));
+    modo = "produtos parecidos";
+  }
+  iguais.sort((a, b) => a[F.P] - b[F.P]);
+  const nRedes = new Set(iguais.map(x => x[F.M])).size;
+  document.getElementById("pdSub").textContent =
+    DB.C[r[F.C]] + " · " + iguais.length + (iguais.length === 1 ? " preço" : " preços") +
+    " em " + nRedes + (nRedes === 1 ? " rede" : " redes") + " · " + modo;
+
+  const corpo = document.getElementById("pdCorpo");
+  corpo.textContent = "";
+  const rol = document.createElement("div");
+  rol.className = "rolagem";
+  const t = document.createElement("table");
+  t.className = "cmp";
+  t.innerHTML = "<thead><tr><th>Produto e loja</th><th>Preço</th></tr></thead>";
+  const tb = document.createElement("tbody");
+  const menor = Math.min(...iguais.map(x => x[F.P]));
+  iguais.slice(0, 40).forEach(x => {
+    const tr = document.createElement("tr");
+    if (x[F.P] === menor) tr.className = "best";
+    const td1 = document.createElement("td");
+    const linha1 = document.createElement("div");
+    linha1.textContent = x[F.N];
+    const linha2 = document.createElement("div");
+    linha2.style.color = "var(--tinta-3)"; linha2.style.fontSize = "12.5px";
+    linha2.textContent = DB.M[x[F.M]] + " · " + DB.L[x[F.L]].split(" | ")[1] + (x[F.O] === iEncarte ? " · encarte" : "") + (x[F.S] ? " · SKU " + x[F.S] : "");
+    td1.append(linha1, linha2);
+    const td2 = document.createElement("td");
+    td2.textContent = brl(x[F.P]) + (x[F.U] === iKg() ? " /kg" : "") + (x[F.K] && x[F.U] !== iKg() ? " (" + brl(x[F.K]) + "/kg)" : "");
+    tr.append(td1, td2);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); rol.appendChild(t); corpo.appendChild(rol);
+
+  if (iguais.length > 1) {
+    const maior = Math.max(...iguais.map(x => x[F.P]));
+    const n = document.createElement("p");
+    n.className = "nota";
+    n.textContent = "Diferença entre o menor e o maior preço: " + brl(maior - menor) +
+      " (" + Math.round((maior / menor - 1) * 100) + "%).";
+    corpo.appendChild(n);
+  }
+  if (r[F.CF] && r[F.CF].parceiro) {
+    const c = document.createElement("p");
+    c.className = "nota";
+    c.textContent = (r[F.CF].obs ? r[F.CF].obs + " — " : "") +
+      "preço publicado pelo próprio " + r[F.CF].por +
+      (r[F.CF].d ? " em " + diaMes(r[F.CF].d) : "") + ".";
+    corpo.appendChild(c);
+  } else if (r[F.CF]) {
+    const c = document.createElement("p");
+    c.className = "nota";
+    c.textContent = "Preço conferido na loja em " + diaMes(r[F.CF].d) +
+      (r[F.CF].por ? " por " + r[F.CF].por : "") + (r[F.CF].obs ? " — " + r[F.CF].obs : "") + ".";
+    corpo.appendChild(c);
+  }
+  if (temApi) {
+    const acoes = document.createElement("div");
+    acoes.className = "acao-env";
+    const b1 = document.createElement("button");
+    b1.className = "btn"; b1.type = "button"; b1.textContent = "Corrigir este preço";
+    b1.onclick = () => { dlgProduto.close(); abrirEnvio("correcao", r); };
+    const b2 = document.createElement("button");
+    b2.className = "btn"; b2.type = "button"; b2.textContent = "Adicionar produto que falta";
+    b2.onclick = () => { dlgProduto.close(); abrirEnvio("novo", r); };
+    acoes.append(b1, b2);
+    corpo.appendChild(acoes);
+    const nt = document.createElement("p");
+    nt.className = "nota";
+    nt.textContent = "A correção vale para " + DB.L[r[F.L]].split(" | ")[1] +
+      ", precisa da foto da etiqueta e só entra no app depois de aprovada.";
+    corpo.appendChild(nt);
+  }
+  dlgProduto.showModal();
+}
+function palavrasChave(nome) {
+  return semAcento(nome).replace(/[^a-z0-9 ]/g, " ").split(/\s+/)
+    .filter(p => p.length > 3 && !["bovino","bovina","suino","suina","frango","congelado","congelada","resfriado","resfriada","pacote","peca","pedaco","aprox","aproximadamente","embalagem"].includes(p))
+    .slice(0, 2);
+}
+
+// ----- popup de ofertas -----
+const dlgOfertas = document.getElementById("dlgOfertas");
+function destaques() {
+  // os destaques seguem o grupo escolhido na tela: não adianta anunciar carne moída
+  // como oferta do dia para quem está montando churrasco
+  const disp = linhas.filter(r => r[F.O] !== iSemEstoque &&
+    (!temUso || (r[F.CH] === 0 ? 0 : 1) === estado.uso));
+  const porKg = disp.filter(r => r[F.K] && !/rim|figado|cora[cç][aã]o|moela|bucho|mocot|dobradinha|tripa|miudo|\bpe\b|orelha|focinho|rabo|lingua/i.test(semAcento(r[F.N])));
+  const cats = ["Carne Bovina", "Carne Suína", "Aves"];
+  const cards = [];
+  cats.forEach(c => {
+    const ic = DB.C.indexOf(c);
+    if (ic < 0) return;
+    const m = porKg.filter(r => r[F.C] === ic).sort((a, b) => a[F.K] - b[F.K])[0];
+    if (m) cards.push({et: "Mais barato em " + c.toLowerCase(), nm: m[F.N], on: DB.M[m[F.M]] + " · " + DB.L[m[F.L]].split(" | ")[1], pr: brl(m[F.K]) + "/kg", r: m});
+  });
+  // maior diferença de preço para o mesmo produto entre redes
+  const mapa = new Map();
+  porKg.forEach(r => { const k = semAcento(r[F.N]); (mapa.get(k) || mapa.set(k, []).get(k)).push(r); });
+  let melhor = null;
+  mapa.forEach(arr => {
+    if (arr.length < 2) return;
+    const redes = new Set(arr.map(r => r[F.M]));
+    if (redes.size < 2) return;
+    const min = arr.reduce((a, b) => a[F.K] <= b[F.K] ? a : b), max = arr.reduce((a, b) => a[F.K] >= b[F.K] ? a : b);
+    const dif = max[F.K] - min[F.K];
+    if (dif > 0 && (!melhor || dif > melhor.dif)) melhor = {dif, min, max};
+  });
+  if (melhor) cards.push({
+    et: "Maior diferença entre redes",
+    nm: melhor.min[F.N],
+    on: DB.M[melhor.min[F.M]] + " · " + DB.L[melhor.min[F.L]].split(" | ")[1] + " — contra " + brl(melhor.max[F.K]) + "/kg no " + DB.M[melhor.max[F.M]],
+    pr: brl(melhor.min[F.K]) + "/kg", r: melhor.min
+  });
+  const quedas = disp.filter(r => r[F.D] <= -10).sort((a, b) => a[F.D] - b[F.D]).slice(0, 3);
+  quedas.forEach(r => cards.push({
+    et: "Caiu " + Math.abs(r[F.D]).toFixed(0) + "% desde " + DB.anterior.split("-").reverse().join("/"),
+    nm: r[F.N],
+    on: DB.M[r[F.M]] + " · " + DB.L[r[F.L]].split(" | ")[1],
+    pr: brl(r[F.P]) + (r[F.U] === iKg() ? "/kg" : ""), r
+  }));
+  const enc = disp.filter(r => r[F.O] === iEncarte).sort((a, b) => (a[F.K] || a[F.P]) - (b[F.K] || b[F.P])).slice(0, 3);
+  enc.forEach(r => cards.push({
+    et: "Oferta de encarte", ouro: true, nm: r[F.N],
+    on: DB.M[r[F.M]] + " · " + DB.L[r[F.L]].split(" | ")[1],
+    pr: brl(r[F.P]) + (r[F.U] === iKg() ? "/kg" : ""), r
+  }));
+  return cards;
+}
+function abrirOfertas() {
+  const corpo = document.getElementById("ofCorpo");
+  corpo.textContent = "";
+  const cards = destaques();
+  document.getElementById("ofSub").textContent = "Destaques da coleta de " + DB.data.split("-").reverse().join("/") +
+    (temUso ? " · " + (estado.uso ? "cortes de churrasco" : "carnes do dia a dia") : "");
+  cards.forEach(c => {
+    const d = document.createElement("button");
+    d.type = "button";
+    d.className = "destaque" + (c.ouro ? " ouro" : "");
+    d.style.cursor = "pointer"; d.style.font = "inherit"; d.style.color = "inherit"; d.style.textAlign = "left"; d.style.background = c.ouro ? "" : "transparent";
+    const esq = document.createElement("div");
+    const et = document.createElement("div"); et.className = "et"; et.textContent = c.et;
+    const nm = document.createElement("div"); nm.className = "nm"; nm.textContent = c.nm;
+    const onde = document.createElement("div"); onde.className = "on"; onde.textContent = c.on;
+    esq.append(et, nm, onde);
+    const pr = document.createElement("div"); pr.className = "pr"; pr.textContent = c.pr;
+    d.append(esq, pr);
+    d.onclick = () => { dlgOfertas.close(); abrirProduto(c.r); };
+    corpo.appendChild(d);
+  });
+  const n = document.createElement("p");
+  n.className = "nota";
+  n.textContent = "Preço por kg dos itens vendidos em embalagem é calculado pelo peso do nome. Ofertas de encarte valem na loja física, dentro da validade.";
+  corpo.appendChild(n);
+  dlgOfertas.showModal();
+}
+document.getElementById("btnOfertas").addEventListener("click", abrirOfertas);
+document.querySelectorAll("[data-fechar]").forEach(b => b.addEventListener("click", () => b.closest("dialog").close()));
+document.querySelectorAll("dialog").forEach(d => d.addEventListener("click", e => { if (e.target === d) d.close(); }));
+
+// ----- envio de correção de preço e de produto novo -----
+const dlgEnvio = document.getElementById("dlgEnvio");
+const formEnvio = document.getElementById("formEnvio");
+const inFoto = document.getElementById("envFoto");
+const btnEnviar = document.getElementById("envEnviar");
+let envioAtual = null;
+let fotoPronta = null;
+
+document.getElementById("btnNovo").hidden = !temApi;
+if (!temApi) {
+  // deixa o motivo visível em vez de sumir com os botões sem explicação
+  const r = document.querySelector(".rodape");
+  const s = document.createElement("span");
+  s.textContent = "Envio de correções indisponível: o servidor do app não respondeu em api/ping.";
+  s.style.color = "var(--mostarda)";
+  r.appendChild(s);
+}
+document.getElementById("btnNovo").addEventListener("click", () => abrirEnvio("novo", null));
+
+function hojeLocal() {
+  const d = new Date(Date.now() - new Date().getTimezoneOffset() * 60000);
+  return d.toISOString().slice(0, 10);
+}
+function precoNum(v) {
+  const n = parseFloat(String(v).replace(/[^\d.,]/g, "").replace(/\.(?=\d{3}\b)/g, "").replace(",", "."));
+  return Number.isFinite(n) && n >= 0.05 && n <= 9999 ? Math.round(n * 100) / 100 : 0;
+}
+function mostrarErro(msg) {
+  const e = document.getElementById("envErro");
+  e.textContent = msg || ""; e.hidden = !msg;
+  if (msg) e.scrollIntoView({ block: "nearest" });
+}
+function limparFoto() {
+  if (fotoPronta) URL.revokeObjectURL(fotoPronta.url);
+  fotoPronta = null;
+  inFoto.value = "";
+  const img = document.getElementById("envPrevia");
+  img.removeAttribute("src"); img.hidden = true;
+  document.getElementById("btnFoto").textContent = "Tirar ou escolher foto";
+  document.getElementById("envFotoDica").textContent = "O preço precisa aparecer legível na foto. Sem ela o envio não é aceito.";
+}
+// reduz a foto no próprio aparelho: sobe rápido e ocupa pouco no armazenamento
+function prepararFoto(arquivo) {
+  return new Promise((ok, erro) => {
+    if (!/^image\//.test(arquivo.type)) return erro(new Error("Escolha uma foto da etiqueta."));
+    const leitor = new FileReader();
+    leitor.onerror = () => erro(new Error("Não consegui ler essa foto."));
+    leitor.onload = () => {
+      const img = new Image();
+      img.onerror = () => erro(new Error("Formato de imagem não reconhecido. Tire a foto pelo próprio app."));
+      img.onload = () => {
+        const escala = Math.min(1, 1400 / Math.max(img.width, img.height));
+        const c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(img.width * escala));
+        c.height = Math.max(1, Math.round(img.height * escala));
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(b => b ? ok({ blob: b, url: URL.createObjectURL(b) }) : erro(new Error("Não consegui preparar a foto.")), "image/jpeg", 0.82);
+      };
+      img.src = leitor.result;
+    };
+    leitor.readAsDataURL(arquivo);
+  });
+}
+document.getElementById("btnFoto").addEventListener("click", () => inFoto.click());
+inFoto.addEventListener("change", async () => {
+  const f = inFoto.files && inFoto.files[0];
+  if (!f) return;
+  try {
+    mostrarErro("");
+    const pronta = await prepararFoto(f);
+    if (fotoPronta) URL.revokeObjectURL(fotoPronta.url);
+    fotoPronta = pronta;
+    const img = document.getElementById("envPrevia");
+    img.src = pronta.url; img.hidden = false;
+    document.getElementById("btnFoto").textContent = "Trocar foto";
+    document.getElementById("envFotoDica").textContent =
+      "Foto pronta (" + Math.round(pronta.blob.size / 1024) + " KB). Confira se dá para ler o preço.";
+  } catch (e) { limparFoto(); mostrarErro(e.message); }
+});
+
+function montarSelects(r) {
+  const sM = document.getElementById("envMerc"), sL = document.getElementById("envLoja"), sC = document.getElementById("envCat");
+  sM.textContent = ""; sC.textContent = "";
+  DB.M.forEach((m, i) => sM.add(new Option(m, i)));
+  DB.C.forEach((c, i) => sC.add(new Option(c, i)));
+  if (r) { sM.value = r[F.M]; sC.value = r[F.C]; }
+  const encherLojas = () => {
+    sL.textContent = "";
+    const merc = DB.M[+sM.value] + " | ";
+    DB.L.forEach((l, i) => {
+      if (!l.startsWith(merc)) return;
+      if (/tabloide|encarte/i.test(l)) return;   // encarte não é loja para cadastrar produto
+      sL.add(new Option(l.slice(merc.length), i));
+    });
+    if (!sL.options.length) DB.L.forEach((l, i) => sL.add(new Option(l.replace(" | ", " · "), i)));
+  };
+  sM.onchange = encherLojas;
+  encherLojas();
+  if (r && DB.L[r[F.L]].startsWith(DB.M[r[F.M]] + " | ")) sL.value = r[F.L];
+}
+
+function abrirEnvio(modo, r) {
+  envioAtual = { modo, r };
+  formEnvio.reset();
+  limparFoto();
+  mostrarErro("");
+  formEnvio.hidden = false;
+  document.getElementById("envOk").hidden = true;
+  document.getElementById("envData").value = hojeLocal();
+  document.getElementById("envTitulo").textContent = modo === "correcao" ? "Corrigir preço" : "Adicionar produto";
+  document.getElementById("envSub").textContent = modo === "correcao"
+    ? "Vale para a loja do item escolhido e passa pela aprovação do admin."
+    : "Para um produto que existe na loja e ainda não aparece aqui.";
+  const resumo = document.getElementById("envResumo");
+  const novos = document.getElementById("envNovoCampos");
+  if (modo === "correcao" && r) {
+    resumo.hidden = false; novos.hidden = true;
+    resumo.textContent = "";
+    const l1 = document.createElement("div");
+    l1.style.fontWeight = "500"; l1.textContent = r[F.N];
+    const l2 = document.createElement("div");
+    l2.className = "dica";
+    l2.textContent = DB.M[r[F.M]] + " · " + DB.L[r[F.L]].split(" | ")[1] + " · no app hoje: " +
+      brl(r[F.P]) + (r[F.U] === iKg() ? " por kg" : " por unidade");
+    resumo.append(l1, l2);
+    document.getElementById("envUn").value = r[F.U] === iKg() ? "kg" : "un";
+  } else {
+    resumo.hidden = true; novos.hidden = false;
+    montarSelects(r);
+  }
+  dlgEnvio.showModal();
+  setTimeout(() => document.getElementById(modo === "correcao" ? "envPreco" : "envNome").focus(), 60);
+}
+
+formEnvio.addEventListener("submit", async ev => {
+  ev.preventDefault();
+  mostrarErro("");
+  if (!fotoPronta) return mostrarErro("Anexe a foto da etiqueta com o valor — sem ela o envio não é aceito.");
+  const preco = precoNum(document.getElementById("envPreco").value);
+  if (!preco) return mostrarErro("Preço inválido. Escreva como 49,90.");
+  const data = document.getElementById("envData").value;
+  if (!data) return mostrarErro("Informe a data da etiqueta.");
+
+  const fd = new FormData();
+  fd.append("tipo", envioAtual.modo);
+  fd.append("preco", String(preco));
+  fd.append("unidade", document.getElementById("envUn").value);
+  fd.append("data", data);
+  fd.append("por", document.getElementById("envPor").value);
+  fd.append("obs", document.getElementById("envObs").value);
+  fd.append("data_coleta", DB.data);
+  if (envioAtual.modo === "correcao") {
+    const r = envioAtual.r;
+    fd.append("mercado", DB.M[r[F.M]]);
+    fd.append("loja", DB.L[r[F.L]]);
+    fd.append("categoria", DB.C[r[F.C]]);
+    fd.append("produto", r[F.N]);
+    fd.append("sku", r[F.S] || "");
+    fd.append("preco_site", String(r[F.P]));
+  } else {
+    const nome = document.getElementById("envNome").value.trim();
+    if (nome.length < 3) return mostrarErro("Escreva o nome do produto como está na etiqueta.");
+    const iL = +document.getElementById("envLoja").value;
+    if (!DB.L[iL]) return mostrarErro("Escolha a loja.");
+    fd.append("mercado", DB.M[+document.getElementById("envMerc").value]);
+    fd.append("loja", DB.L[iL]);
+    fd.append("categoria", DB.C[+document.getElementById("envCat").value]);
+    fd.append("produto", nome);
+  }
+  fd.append("foto", fotoPronta.blob, "etiqueta.jpg");
+
+  const rotulo = btnEnviar.textContent;
+  btnEnviar.disabled = true; btnEnviar.textContent = "Enviando…";
+  try {
+    const resp = await fetch(API + "/envios", { method: "POST", body: fd });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok || !j.ok) throw new Error(j.erro || "Não consegui enviar agora. Tente de novo em instantes.");
+    formEnvio.hidden = true;
+    document.getElementById("envOk").hidden = false;
+    document.getElementById("envOkDet").textContent =
+      (envioAtual.modo === "correcao" ? "Correção" : "Produto") + " registrado com a foto da etiqueta. " +
+      (j.pendentes > 1 ? j.pendentes + " envios esperando aprovação." : "É o único envio na fila.");
+    limparFoto();
+  } catch (e) {
+    mostrarErro(e.message);
+  } finally {
+    btnEnviar.disabled = false; btnEnviar.textContent = rotulo;
+  }
+});
+
+dlgEnvio.addEventListener("close", limparFoto);
+
+if (totalParceiros) {
+  const s = document.querySelector(".sub");
+  const extra = document.createElement("span");
+  extra.textContent = " · " + totalParceiros + (totalParceiros === 1 ? " produto de parceiro" : " produtos de parceiros");
+  extra.style.color = "var(--mostarda)";
+  s.appendChild(extra);
+}
+
+if (totalAjustes) {
+  const s = document.querySelector(".sub");
+  const extra = document.createElement("span");
+  extra.textContent = " · " + totalAjustes + (totalAjustes === 1 ? " preço conferido" : " preços conferidos") + " na loja";
+  extra.style.color = "var(--verde)";
+  s.appendChild(extra);
+}
+
+  if (origemDados !== "servidor") {
+    const s = document.querySelector(".sub");
+    const av = document.createElement("span");
+    av.textContent = " · " + origemDados;
+    av.style.color = "var(--tinta-3)";
+    s.appendChild(av);
+  }
+
+  render();
+  abrirOfertas();
+}
+
+// ----- dividir a conta do churrasco (não depende dos preços: funciona offline) -----
+(function () {
+  const dlg = document.getElementById("dlgConta");
+  const elTotal = document.getElementById("ctTotal");
+  const elPessoas = document.getElementById("ctPessoas");
+  const elLista = document.getElementById("ctPessoasLista");
+  const elErro = document.getElementById("ctErro");
+  const elSaida = document.getElementById("ctSaida");
+  let ultimoTexto = "";
+  let ultimoResultado = null;
+
+  const dinheiro = c => "R$ " + (c / 100).toFixed(2).replace(".", ",");
+  const emCentavos = v => {
+    const n = parseFloat(String(v).replace(/[^\d.,]/g, "").replace(/\.(?=\d{3}\b)/g, "").replace(",", "."));
+    return Number.isFinite(n) ? Math.round(n * 100) : NaN;
+  };
+  const nomeOu = (nome, alt) => nome || alt;
+
+  function linhaPessoa() {
+    const l = document.createElement("div");
+    l.className = "linha-pessoa";
+
+    const cNome = document.createElement("div");
+    cNome.className = "campo campo-nome";
+    const nome = document.createElement("input");
+    nome.placeholder = "nome (opcional)";
+    nome.maxLength = 30;
+    cNome.appendChild(nome);
+
+    const cTipo = document.createElement("div");
+    cTipo.className = "campo campo-tipo";
+    const tipo = document.createElement("select");
+    [["normal", "cota normal"], ["meia", "paga meia"], ["fixo", "valor fixo"], ["peso", "cota x vezes"]]
+      .forEach(([v, t]) => tipo.add(new Option(t, v)));
+    cTipo.appendChild(tipo);
+
+    const cValor = document.createElement("div");
+    cValor.className = "campo campo-cota";
+    const valor = document.createElement("input");
+    valor.inputMode = "decimal";
+    valor.placeholder = "R$ 0,00";
+    cValor.hidden = true;
+    cValor.appendChild(valor);
+
+    const cPago = document.createElement("div");
+    cPago.className = "campo campo-pago";
+    const pago = document.createElement("input");
+    pago.inputMode = "decimal";
+    pago.placeholder = "já pagou R$";
+    cPago.appendChild(pago);
+
+    const tirar = document.createElement("button");
+    tirar.type = "button"; tirar.className = "tirar"; tirar.textContent = "✕";
+    tirar.setAttribute("aria-label", "Tirar esta pessoa");
+
+    tipo.onchange = () => {
+      cValor.hidden = tipo.value === "meia" || tipo.value === "normal";
+      valor.placeholder = tipo.value === "fixo" ? "R$ 0,00" : "ex.: 1,5";
+      valor.value = "";
+      calcular();
+    };
+    tirar.onclick = () => { l.remove(); calcular(); };
+    [nome, valor, pago].forEach(i => i.addEventListener("input", calcular));
+
+    l.append(cNome, cTipo, cValor, cPago, tirar);
+    l._ler = () => ({ nome: nome.value.trim(), tipo: tipo.value, bruto: valor.value, pago: pago.value });
+    return l;
+  }
+
+  const especiais = () => [...elLista.children].map(l => l._ler());
+
+  // divisão com o método do maior resto: ninguém paga centavo a mais sem motivo
+  function dividir(totalCent, pessoas, lista) {
+    const gente = [];
+    for (const e of lista) {
+      const quem = e.nome;
+      let pago = 0;
+      if (String(e.pago).trim()) {
+        pago = emCentavos(e.pago);
+        if (!Number.isFinite(pago) || pago < 0) return { erro: "Confira quanto " + nomeOu(quem, "essa pessoa") + " já pagou." };
+      }
+      if (e.tipo === "fixo") {
+        const c = emCentavos(e.bruto);
+        if (!Number.isFinite(c) || c < 0) return { erro: "Confira o valor fixo de " + nomeOu(quem, "quem paga à parte") + "." };
+        gente.push({ nome: quem, tipo: "fixo", cota: c, pago });
+      } else {
+        const peso = e.tipo === "meia" ? 0.5 : e.tipo === "normal" ? 1 : parseFloat(String(e.bruto).replace(",", "."));
+        if (!Number.isFinite(peso) || peso <= 0 || peso > 20) return { erro: "Confira a cota de " + nomeOu(quem, "quem paga diferente") + " (algo como 1,5)." };
+        gente.push({ nome: quem, tipo: "peso", peso, pago });
+      }
+    }
+
+    const nDemais = pessoas - gente.length;
+    if (nDemais < 0) return { erro: "Você listou mais gente do que o total de pessoas." };
+
+    const somaFixos = gente.reduce((s, g) => s + (g.tipo === "fixo" ? g.cota : 0), 0);
+    const restante = totalCent - somaFixos;
+    if (restante < 0) return { erro: "Os valores fixos já passam do total da conta." };
+
+    const pesados = gente.filter(g => g.tipo === "peso");
+    const demais = [];
+    for (let i = 0; i < nDemais; i++) demais.push({ nome: "", tipo: "demais", peso: 1, pago: 0 });
+    const alvos = pesados.concat(demais);
+    const peso = alvos.reduce((s, a) => s + a.peso, 0);
+    if (peso <= 0 && restante > 0) return { erro: "Não sobrou ninguém para dividir o restante de " + dinheiro(restante) + "." };
+
+    const brutos = alvos.map(a => peso > 0 ? restante * a.peso / peso : 0);
+    const cents = brutos.map(v => Math.floor(v));
+    const sobra = restante - cents.reduce((a, b) => a + b, 0);
+    // o centavo que sobra vai para quem ficou mais perto de arredondar para cima
+    const ordem = brutos.map((v, i) => [v - Math.floor(v), i]).sort((a, b) => b[0] - a[0]);
+    for (let i = 0; i < sobra && ordem.length; i++) cents[ordem[i % ordem.length][1]]++;
+    alvos.forEach((a, i) => a.cota = cents[i]);
+
+    const todos = gente.concat(demais);
+    todos.forEach(p => p.saldo = p.pago - p.cota);
+    const totalPago = todos.reduce((s, p) => s + p.pago, 0);
+    const falta = totalCent - totalPago;
+
+    // quem paga quem: os que já adiantaram recebem dos que devem; o que sobrar vai para o caixa
+    const rotuloDemais = nDemais === 1 ? "a outra pessoa" : "os outros " + nDemais;
+    const credores = [], devedores = [];
+    gente.forEach(g => {
+      if (g.saldo > 0) credores.push({ nome: nomeOu(g.nome, "quem adiantou"), valor: g.saldo, n: 1 });
+      else if (g.saldo < 0) devedores.push({ nome: nomeOu(g.nome, "essa pessoa"), valor: -g.saldo, n: 1 });
+    });
+    const dividaDemais = demais.reduce((s, d) => s + d.cota, 0);
+    if (dividaDemais > 0) devedores.push({ nome: rotuloDemais, valor: dividaDemais, n: nDemais });
+
+    credores.sort((a, b) => b.valor - a.valor);
+    devedores.sort((a, b) => b.valor - a.valor);
+    const acerto = [];
+    const C = credores.map(c => ({ ...c })), D = devedores.map(d => ({ ...d }));
+    let i = 0, j = 0;
+    while (i < D.length && j < C.length) {
+      const v = Math.min(D[i].valor, C[j].valor);
+      if (v > 0) acerto.push({ de: D[i].nome, n: D[i].n, para: C[j].nome, valor: v });
+      D[i].valor -= v; C[j].valor -= v;
+      if (D[i].valor === 0) i++;
+      if (C[j].valor === 0) j++;
+    }
+    D.slice(i).forEach(d => { if (d.valor > 0) acerto.push({ de: d.nome, n: d.n, para: "caixa", valor: d.valor }); });
+    C.slice(j).forEach(c => { if (c.valor > 0) acerto.push({ de: "caixa", n: 1, para: c.nome, valor: c.valor }); });
+
+    return {
+      gente, demais, nDemais, rotuloDemais,
+      valorDemais: demais.length ? Math.min(...demais.map(d => d.cota)) : 0,
+      centavoExtra: demais.length ? demais.filter(d => d.cota !== Math.min(...demais.map(x => x.cota))).length : 0,
+      todos, totalPago, falta, acerto, total: totalCent, pessoas
+    };
+  }
+
+  function erro(msg) {
+    elErro.textContent = msg || ""; elErro.hidden = !msg;
+    if (msg) elSaida.hidden = true;
+  }
+
+  function calcular() {
+    const total = emCentavos(elTotal.value);
+    const pessoas = parseInt(String(elPessoas.value).replace(/\D/g, ""), 10);
+    if (!elTotal.value.trim()) { erro(""); elSaida.hidden = true; return; }
+    if (!Number.isFinite(total) || total <= 0) return erro("Escreva o valor total da conta, como 350,00.");
+    if (!Number.isFinite(pessoas) || pessoas < 1) return erro("Quantas pessoas vão dividir?");
+    if (pessoas > 200) return erro("São muitas pessoas — confira o número.");
+
+    const r = dividir(total, pessoas, especiais());
+    if (r.erro) return erro(r.erro);
+    erro("");
+    mostrar(r);
+  }
+
+  const celula = (txt, cls) => {
+    const td = document.createElement("td");
+    td.textContent = txt;
+    if (cls) td.className = cls;
+    return td;
+  };
+
+  function mostrar(r) {
+    ultimoResultado = r;
+    elSaida.hidden = false;
+    const temListados = r.gente.length > 0;
+    const temPagos = r.totalPago > 0;
+    const linhas = [];
+
+    // número grande: o que cada pessoa "comum" paga
+    const semDemais = !r.nDemais;
+    document.getElementById("ctRotulo").textContent =
+      !temListados ? (r.pessoas === 1 ? "Você paga" : "Cada pessoa paga")
+      : semDemais ? "Total dividido" : r.nDemais === 1 ? "A outra pessoa paga" : "Cada um dos outros paga";
+    document.getElementById("ctPorPessoa").textContent = dinheiro(semDemais ? r.total : r.valorDemais);
+    document.getElementById("ctResumo").textContent =
+      dinheiro(r.total) + " entre " + r.pessoas + (r.pessoas === 1 ? " pessoa" : " pessoas") +
+      (temPagos ? " · já pagos " + dinheiro(r.totalPago) : "") +
+      (r.centavoExtra ? " · " + r.centavoExtra + (r.centavoExtra === 1 ? " paga" : " pagam") + " um centavo a mais para fechar" : "");
+
+    // tabela por pessoa
+    const det = document.getElementById("ctDetalhe");
+    det.textContent = "";
+    det.hidden = !(temListados || temPagos);
+    if (!det.hidden) {
+      const t = document.createElement("table");
+      t.className = "cmp";
+      t.innerHTML = temPagos
+        ? "<thead><tr><th>Quem</th><th>Cota</th><th>Já pagou</th><th>Acerto</th></tr></thead>"
+        : "<thead><tr><th>Quem</th><th>Paga</th></tr></thead>";
+      const tb = document.createElement("tbody");
+
+      const linhaDe = (rotulo, p, cls) => {
+        const tr = document.createElement("tr");
+        if (cls) tr.className = cls;
+        tr.appendChild(celula(rotulo, "dono"));
+        tr.appendChild(celula(dinheiro(p.cota) + (p.tipo === "demais" && r.nDemais > 1 ? " cada" : "")));
+        if (temPagos) {
+          tr.appendChild(celula(p.pago ? dinheiro(p.pago) : "—"));
+          tr.appendChild(celula(
+            p.saldo > 0 ? "recebe " + dinheiro(p.saldo) :
+            p.saldo < 0 ? "paga " + dinheiro(-p.saldo) + (p.tipo === "demais" && r.nDemais > 1 ? " cada" : "") : "quitado",
+            p.saldo > 0 ? "receber" : ""));
+        }
+        tb.appendChild(tr);
+      };
+
+      r.gente.forEach(g => {
+        const como = g.tipo === "fixo" ? "valor fixo" : g.peso === 0.5 ? "meia" : g.peso === 1 ? "" : "cota " + String(g.peso).replace(".", ",");
+        const rotulo = g.nome ? g.nome + (como ? " · " + como : "") : (como ? "quem paga " + (g.tipo === "fixo" ? "à parte" : como) : "sem nome");
+        linhaDe(rotulo, g);
+        linhas.push(rotulo + ": cota " + dinheiro(g.cota) +
+          (g.pago ? " · já pagou " + dinheiro(g.pago) + " · " + (g.saldo > 0 ? "recebe " + dinheiro(g.saldo) : g.saldo < 0 ? "paga " + dinheiro(-g.saldo) : "quitado") : ""));
+      });
+      if (r.nDemais > 0) {
+        linhaDe(r.rotuloDemais, r.demais[0] && { ...r.demais[0], cota: r.valorDemais, tipo: "demais" }, "demais");
+        linhas.push(r.rotuloDemais + ": " + dinheiro(r.valorDemais) + (r.nDemais > 1 ? " cada" : ""));
+      }
+      t.appendChild(tb);
+      det.appendChild(t);
+    } else {
+      linhas.push("Cada uma das " + r.pessoas + " pessoas: " + dinheiro(r.valorDemais || r.total));
+    }
+
+    // acerto: quem paga quem
+    const elAcerto = document.getElementById("ctAcerto");
+    elAcerto.textContent = "";
+    const mostraAcerto = temPagos && r.acerto.length;
+    elAcerto.hidden = !mostraAcerto;
+    if (mostraAcerto) {
+      const tit = document.createElement("div");
+      tit.className = "conta-rot";
+      tit.textContent = "Acerto";
+      elAcerto.appendChild(tit);
+      linhas.push("Acerto:");
+      r.acerto.forEach(a => {
+        const cada = a.n > 1 ? " (" + (a.valor % a.n === 0 ? "" : "≈ ") + dinheiro(Math.round(a.valor / a.n)) + " cada)" : "";
+        const txt = a.de === "caixa"
+          ? "o caixa devolve " + dinheiro(a.valor) + " para " + a.para
+          : a.para === "caixa"
+            ? a.de + (a.n > 1 ? " pagam " : " paga ") + dinheiro(a.valor) + " no caixa" + cada
+            : a.de + (a.n > 1 ? " pagam " : " paga ") + dinheiro(a.valor) + " para " + a.para + cada;
+        const p = document.createElement("div");
+        p.className = "acerto-linha";
+        p.textContent = txt.charAt(0).toUpperCase() + txt.slice(1);
+        elAcerto.appendChild(p);
+        linhas.push("- " + txt);
+      });
+    }
+
+    // conferência
+    const somaCotas = r.todos.reduce((s, p) => s + p.cota, 0);
+    const partes = ["Soma das cotas: " + dinheiro(somaCotas) + (somaCotas === r.total ? " — bate com o total." : " — confira os valores.")];
+    if (r.falta > 0 && temPagos) partes.push("Ainda falta pagar " + dinheiro(r.falta) + " no caixa.");
+    if (r.falta < 0) partes.push("Atenção: já pagaram " + dinheiro(-r.falta) + " a mais que o total da conta.");
+    if (r.centavoExtra) partes.push("Um ou outro paga o centavo que não divide exato.");
+    document.getElementById("ctConfere").textContent = partes.join(" ");
+
+    ultimoTexto = "Churrasco — divisão da conta\n" +
+      "Total " + dinheiro(r.total) + " entre " + r.pessoas + (r.pessoas === 1 ? " pessoa" : " pessoas") +
+      (temPagos ? " · já pagos " + dinheiro(r.totalPago) : "") + "\n" +
+      linhas.join("\n") +
+      (r.falta > 0 && temPagos ? "\nAinda falta pagar " + dinheiro(r.falta) + " no caixa." : "");
+  }
+
+  function limpar() {
+    elTotal.value = "";
+    elPessoas.value = "4";
+    elLista.textContent = "";
+    erro("");
+    elSaida.hidden = true;
+    ultimoTexto = "";
+    ultimoResultado = null;
+  }
+
+  // ---------- cartão em imagem, para mandar no grupo ----------
+  // desenhado à mão no canvas: nada de biblioteca externa, funciona offline
+  const CORES = {
+    papel: "#FAF8F4", papel2: "#FFFFFF", linha: "#E2DCD2", tinta: "#1C1A16",
+    tinta2: "#5F594E", tinta3: "#8A8377", carmim: "#A82C22", verde: "#2C6B4F", verdeSuave: "#E2EDE6"
+  };
+  const L = 1080;              // largura do cartão
+  const M = 64;                // margem lateral
+
+  function fonte(peso, tam, mono) {
+    return peso + " " + tam + "px " + (mono
+      ? '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace'
+      : '"Bricolage Grotesque", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif');
+  }
+  function quebrar(ctx, txt, largura) {
+    const palavras = String(txt).split(" ");
+    const linhas = [];
+    let atual = "";
+    palavras.forEach(w => {
+      const tenta = atual ? atual + " " + w : w;
+      if (ctx.measureText(tenta).width > largura && atual) { linhas.push(atual); atual = w; }
+      else atual = tenta;
+    });
+    if (atual) linhas.push(atual);
+    return linhas;
+  }
+  function cortar(ctx, txt, largura) {
+    let s = String(txt);
+    if (ctx.measureText(s).width <= largura) return s;
+    while (s.length > 1 && ctx.measureText(s + "…").width > largura) s = s.slice(0, -1);
+    return s + "…";
+  }
+  function caixa(ctx, x, y, w, alt, raio, cor) {
+    ctx.fillStyle = cor;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(x, y, w, alt, raio);
+    else ctx.rect(x, y, w, alt);
+    ctx.fill();
+  }
+
+  function cartao() {
+    const r = ultimoResultado;
+    if (!r) return null;
+    const temPagos = r.totalPago > 0;
+    const medidor = document.createElement("canvas").getContext("2d");
+
+    // ---- monta as linhas primeiro, para saber a altura final
+    const corpo = [];   // {tipo, ...}
+    medidor.font = fonte(400, 30);
+    const resumo = quebrar(medidor,
+      dinheiro(r.total) + " entre " + r.pessoas + (r.pessoas === 1 ? " pessoa" : " pessoas") +
+      (temPagos ? " · já pagos " + dinheiro(r.totalPago) : ""), L - 2 * M);
+
+    r.gente.forEach(g => {
+      const como = g.tipo === "fixo" ? "valor fixo" : g.peso === 0.5 ? "meia" : g.peso === 1 ? "" : "cota " + String(g.peso).replace(".", ",");
+      corpo.push({
+        quem: (g.nome || "sem nome") + (como ? " · " + como : ""),
+        cota: dinheiro(g.cota),
+        pago: g.pago ? dinheiro(g.pago) : "—",
+        acerto: g.saldo > 0 ? "+" + dinheiro(g.saldo) : g.saldo < 0 ? "−" + dinheiro(-g.saldo) : "quitado",
+        recebe: g.saldo > 0
+      });
+    });
+    if (r.nDemais > 0 && r.gente.length) {
+      corpo.push({
+        quem: r.rotuloDemais,
+        cota: dinheiro(r.valorDemais) + (r.nDemais > 1 ? " cada" : ""),
+        pago: "—",
+        acerto: "−" + dinheiro(r.valorDemais),
+        suave: true
+      });
+    }
+
+    medidor.font = fonte(500, 28);
+    const acertos = [];
+    (temPagos ? r.acerto : []).forEach(a => {
+      const cada = a.n > 1 ? " (" + (a.valor % a.n === 0 ? "" : "≈ ") + dinheiro(Math.round(a.valor / a.n)) + " cada)" : "";
+      const txt = a.de === "caixa"
+        ? "o caixa devolve " + dinheiro(a.valor) + " para " + a.para
+        : a.para === "caixa"
+          ? a.de + (a.n > 1 ? " pagam " : " paga ") + dinheiro(a.valor) + " no caixa" + cada
+          : a.de + (a.n > 1 ? " pagam " : " paga ") + dinheiro(a.valor) + " para " + a.para + cada;
+      quebrar(medidor, txt.charAt(0).toUpperCase() + txt.slice(1), L - 2 * M - 56).forEach((linha, i) => acertos.push({ linha, primeira: i === 0 }));
+    });
+
+    medidor.font = fonte(400, 25);
+    const rodape = quebrar(medidor,
+      (temPagos ? "No acerto, + é o que a pessoa tem a receber e − o que ela ainda paga. " : "") +
+      document.getElementById("ctConfere").textContent, L - 2 * M);
+
+    const alturaTopo = 176;
+    const alturaValor = 250 + (resumo.length - 1) * 38;
+    const alturaTabela = corpo.length ? 60 + corpo.length * 62 + 24 : 0;
+    const alturaAcerto = acertos.length ? 40 + 56 + acertos.length * 44 + 28 : 0;
+    const alturaRodape = 28 + rodape.length * 34 + 60;
+    const A = alturaTopo + alturaValor + alturaTabela + alturaAcerto + alturaRodape;
+
+    // ---- desenha
+    const c = document.createElement("canvas");
+    c.width = L; c.height = A;
+    const ctx = c.getContext("2d");
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = CORES.papel;
+    ctx.fillRect(0, 0, L, A);
+
+    // faixa do topo com a marca
+    ctx.fillStyle = CORES.carmim;
+    ctx.fillRect(0, 0, L, alturaTopo);
+    const logo = document.querySelector(".marca img");
+    if (logo && logo.complete && logo.naturalWidth) {
+      ctx.save();
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(M, 42, 92, 92, 18); else ctx.rect(M, 42, 92, 92);
+      ctx.clip();
+      ctx.drawImage(logo, M, 42, 92, 92);
+      ctx.restore();
+    }
+    const xTexto = M + (logo ? 118 : 0);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = fonte(800, 42);
+    ctx.fillText("CiadoChurras", xTexto, 84);
+    ctx.fillStyle = "rgba(255,255,255,.85)";
+    ctx.font = fonte(400, 27);
+    ctx.fillText("Divisão da conta · " + new Date().toLocaleDateString("pt-BR"), xTexto, 122);
+
+    let y = alturaTopo + 76;
+    ctx.textAlign = "center";
+    ctx.fillStyle = CORES.tinta3;
+    ctx.font = fonte(600, 24);
+    ctx.fillText(document.getElementById("ctRotulo").textContent.toUpperCase(), L / 2, y);
+    y += 96;
+    ctx.fillStyle = CORES.tinta;
+    ctx.font = fonte(600, 92, true);
+    ctx.fillText(document.getElementById("ctPorPessoa").textContent, L / 2, y);
+    y += 50;
+    ctx.fillStyle = CORES.tinta2;
+    ctx.font = fonte(400, 30);
+    resumo.forEach(linha => { ctx.fillText(linha, L / 2, y); y += 38; });
+    ctx.textAlign = "left";
+    y += 24;
+
+    if (corpo.length) {
+      // bordas direitas de cada coluna, com folga para não se encavalarem
+      const colCota = temPagos ? 620 : L - M;
+      const colPago = 800;
+      const colAcerto = L - M;
+      const largNome = temPagos ? 300 : L - M - 280 - M;
+      ctx.strokeStyle = CORES.linha;
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(L - M, y); ctx.stroke();
+      y += 38;
+      ctx.fillStyle = CORES.tinta3;
+      ctx.font = fonte(600, 22);
+      ctx.fillText("QUEM", M, y);
+      ctx.textAlign = "right";
+      ctx.fillText("COTA", colCota, y);
+      if (temPagos) { ctx.fillText("JÁ PAGOU", colPago, y); ctx.fillText("ACERTO", colAcerto, y); }
+      ctx.textAlign = "left";
+      y += 22;
+
+      corpo.forEach(linha => {
+        ctx.strokeStyle = CORES.linha;
+        ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(L - M, y); ctx.stroke();
+        y += 42;
+        ctx.fillStyle = linha.suave ? CORES.tinta2 : CORES.tinta;
+        ctx.font = fonte(500, 30);
+        ctx.fillText(cortar(ctx, linha.quem, largNome), M, y);
+        ctx.textAlign = "right";
+        ctx.font = fonte(500, 28, true);
+        ctx.fillStyle = linha.suave ? CORES.tinta2 : CORES.tinta;
+        ctx.fillText(linha.cota, colCota, y);
+        if (temPagos) {
+          ctx.fillStyle = CORES.tinta2;
+          ctx.font = fonte(500, 28, true);
+          ctx.fillText(linha.pago, colPago, y);
+          ctx.fillStyle = linha.recebe ? CORES.verde : CORES.tinta2;
+          ctx.font = fonte(linha.recebe ? 600 : 500, 28, true);
+          ctx.fillText(cortar(ctx, linha.acerto, colAcerto - colPago - 28), colAcerto, y);
+        }
+        ctx.textAlign = "left";
+        y += 20;
+      });
+      ctx.strokeStyle = CORES.linha;
+      ctx.beginPath(); ctx.moveTo(M, y); ctx.lineTo(L - M, y); ctx.stroke();
+      y += 24;
+    }
+
+    if (acertos.length) {
+      y += 16;
+      const alt = 56 + acertos.length * 44 + 12;
+      caixa(ctx, M, y, L - 2 * M, alt, 18, CORES.verdeSuave);
+      let yy = y + 44;
+      ctx.fillStyle = CORES.verde;
+      ctx.font = fonte(600, 22);
+      ctx.fillText("ACERTO", M + 28, yy);
+      yy += 42;
+      ctx.font = fonte(500, 28);
+      acertos.forEach(a => { ctx.fillText(a.linha, M + 28, yy); yy += 44; });
+      y += alt + 28;
+    }
+
+    y += 28;
+    ctx.fillStyle = CORES.tinta3;
+    ctx.font = fonte(400, 25);
+    rodape.forEach(linha => { ctx.fillText(linha, M, y); y += 34; });
+    ctx.fillStyle = CORES.linha;
+    ctx.font = fonte(500, 23);
+    ctx.textAlign = "right";
+    ctx.fillStyle = CORES.tinta3;
+    ctx.fillText("ciadochurras.pages.dev", L - M, A - 26);
+    ctx.textAlign = "left";
+
+    return c;
+  }
+  window.__cartaoDaConta = cartao;   // usado pelo teste automatizado
+
+  // gera o arquivo de forma síncrona: no iPhone, compartilhar depois de um await
+  // costuma perder o "toque" do usuário e o envio falha
+  function arquivoJpg() {
+    const c = cartao();
+    if (!c) return null;
+    const url = c.toDataURL("image/jpeg", 0.92);
+    const bin = atob(url.split(",")[1]);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new File([bytes], "divisao-da-conta.jpg", { type: "image/jpeg" });
+  }
+
+  function avisoImagem(msg) {
+    const el = document.getElementById("ctImagemAviso");
+    el.textContent = msg || ""; el.hidden = !msg;
+  }
+
+  document.getElementById("ctImagem").addEventListener("click", ev => {
+    const b = ev.currentTarget, rotulo = b.textContent;
+    avisoImagem("");
+    let arquivo;
+    try { arquivo = arquivoJpg(); } catch (e) { arquivo = null; }
+    if (!arquivo) return avisoImagem("Preencha a conta antes de gerar a imagem.");
+
+    const volta = () => setTimeout(() => { b.textContent = rotulo; }, 2500);
+
+    // 1) celular: manda o JPG direto para o WhatsApp
+    if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+      navigator.share({ files: [arquivo], title: "Divisão da conta" })
+        .then(() => { b.textContent = "Enviado!"; volta(); })
+        .catch(e => { if (e && e.name !== "AbortError") baixar(arquivo, b, rotulo); });
+      return;
+    }
+
+    // 2) computador: copia a imagem para a área de transferência (o navegador só aceita PNG aqui)
+    if (navigator.clipboard && window.ClipboardItem) {
+      const c = cartao();
+      const png = new Promise(res => c.toBlob(res, "image/png"));
+      navigator.clipboard.write([new ClipboardItem({ "image/png": png })])
+        .then(() => {
+          b.textContent = "Imagem copiada!";
+          avisoImagem("Copiada como PNG (é o formato que o navegador aceita na área de transferência). Para ter o arquivo .jpg, use o botão de novo em um celular ou salve pelo aparelho.");
+          volta();
+        })
+        .catch(() => baixar(arquivo, b, rotulo));
+      return;
+    }
+
+    // 3) último caso: baixa o arquivo
+    baixar(arquivo, b, rotulo);
+  });
+
+  function baixar(arquivo, b, rotulo) {
+    const url = URL.createObjectURL(arquivo);
+    const a = document.createElement("a");
+    a.href = url; a.download = arquivo.name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    b.textContent = "Imagem salva!";
+    avisoImagem("A imagem foi salva como divisao-da-conta.jpg — é só anexar no grupo.");
+    setTimeout(() => { b.textContent = rotulo; }, 2500);
+  }
+
+  document.getElementById("btnConta").addEventListener("click", () => {
+    dlg.showModal();
+    setTimeout(() => elTotal.focus(), 60);
+  });
+  document.getElementById("ctAdd").addEventListener("click", () => {
+    elLista.appendChild(linhaPessoa());
+    calcular();
+  });
+  document.getElementById("ctMenos").addEventListener("click", () => {
+    elPessoas.value = Math.max(1, (parseInt(elPessoas.value, 10) || 1) - 1);
+    calcular();
+  });
+  document.getElementById("ctMais").addEventListener("click", () => {
+    elPessoas.value = Math.min(200, (parseInt(elPessoas.value, 10) || 0) + 1);
+    calcular();
+  });
+  elTotal.addEventListener("input", calcular);
+  elPessoas.addEventListener("input", calcular);
+  document.getElementById("formConta").addEventListener("submit", e => { e.preventDefault(); calcular(); });
+  document.getElementById("ctLimpar").addEventListener("click", limpar);
+  document.getElementById("ctCopiar").addEventListener("click", async ev => {
+    if (!ultimoTexto) return;
+    const b = ev.currentTarget, rotulo = b.textContent;
+    try {
+      await navigator.clipboard.writeText(ultimoTexto);
+      b.textContent = "Copiado!";
+    } catch (e) {
+      // navegador sem permissão de área de transferência: mostra o texto para copiar na mão
+      const p = document.createElement("pre");
+      p.className = "nota";
+      p.style.whiteSpace = "pre-wrap";
+      p.textContent = ultimoTexto;
+      document.getElementById("ctConfere").after(p);
+      b.textContent = "Copie o texto acima";
+    }
+    setTimeout(() => { b.textContent = rotulo; }, 2500);
+  });
+})();
+
+// instalar na tela de início
+let promptInstalar = null;
+const btnInst = document.getElementById("btnInstalar");
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault(); promptInstalar = e; btnInst.hidden = false;
+});
+btnInst.addEventListener("click", async () => {
+  if (!promptInstalar) return;
+  promptInstalar.prompt();
+  await promptInstalar.userChoice;
+  promptInstalar = null; btnInst.hidden = true;
+});
+window.addEventListener("appinstalled", () => { btnInst.hidden = true; });
+
+// service worker: casco em cache, dados com reserva offline
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+}
+</script>

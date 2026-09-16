@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Estabelecimentos · CiadoChurras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#A82C22">
+<style>
+:root{
+  --papel:#FAF8F4; --papel-2:#FFFFFF; --linha:#E2DCD2; --linha-forte:#CFC7B9;
+  --tinta:#1C1A16; --tinta-2:#5F594E; --tinta-3:#8A8377;
+  --carmim:#A82C22; --carmim-suave:#F3E2DF;
+  --verde:#2C6B4F; --verde-suave:#E2EDE6;
+  --mostarda:#9A6B12; --mostarda-suave:#F6EBD6;
+  --sombra:0 1px 2px rgba(28,26,22,.06), 0 8px 24px -16px rgba(28,26,22,.25);
+  --fb:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fm:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --papel:#151412; --papel-2:#1E1C19; --linha:#2E2B26; --linha-forte:#413C34;
+    --tinta:#F2EEE7; --tinta-2:#B5AEA2; --tinta-3:#8B8477;
+    --carmim:#E4685A; --carmim-suave:#3A211D;
+    --verde:#6FBF92; --verde-suave:#1C2C24;
+    --mostarda:#DCA63F; --mostarda-suave:#2E2413;
+    --sombra:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--fb);font-size:15px;line-height:1.45}
+header{border-bottom:1px solid var(--linha);background:var(--papel-2)}
+.in{max-width:980px;margin:0 auto;padding-inline:18px}
+header .in{padding-block:16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:19px;margin:0;letter-spacing:-.01em}
+h2{font-size:16px;margin:0 0 12px}
+.sub{margin:3px 0 0;font-size:13px;color:var(--tinta-2)}
+main{padding-block:20px 60px}
+.cartao{background:var(--papel-2);border:1px solid var(--linha);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:var(--sombra)}
+.btn{background:var(--papel-2);border:1px solid var(--linha-forte);border-radius:999px;padding:7px 14px;cursor:pointer;font:inherit;font-size:13.5px;color:inherit}
+.btn:hover{border-color:var(--tinta-3)}
+.btn-cheio{background:var(--carmim);border-color:var(--carmim);color:#fff}
+.btn-ok{background:var(--verde);border-color:var(--verde);color:#fff}
+.btn[disabled]{opacity:.55;cursor:progress}
+.form{display:flex;flex-direction:column;gap:14px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.rot{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+input,select,textarea{padding:9px 11px;border:1px solid var(--linha-forte);border-radius:8px;background:var(--papel);color:var(--tinta);font:inherit;width:100%}
+textarea{resize:vertical;min-height:70px}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:620px){.dupla{grid-template-columns:1fr}}
+.linha-senha{display:flex;gap:8px;align-items:center}
+.linha-senha input{font-family:var(--fm)}
+.rodape-form{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.aviso{border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:14px}
+.aviso.erro{background:var(--carmim-suave);color:var(--carmim)}
+.aviso.ok{background:var(--verde-suave);color:var(--verde)}
+.vazio{text-align:center;color:var(--tinta-2);padding:34px 16px;border:1px dashed var(--linha-forte);border-radius:12px}
+.par{border:1px solid var(--linha);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:var(--papel-2)}
+.par-topo{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.par-nome{font-weight:600;font-size:16px}
+.par-info{font-size:13.5px;color:var(--tinta-2);margin-top:3px}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.selo{display:inline-block;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600}
+.selo.ativo{background:var(--verde-suave);color:var(--verde)}
+.selo.suspenso{background:var(--carmim-suave);color:var(--carmim)}
+.msg{background:var(--papel);border:1px solid var(--linha);border-radius:10px;padding:12px 14px;white-space:pre-wrap;font-size:13.5px;font-family:var(--fm);line-height:1.5;max-height:260px;overflow:auto}
+.tab{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:10px}
+.tab th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);padding:8px 10px 8px 0;border-bottom:1px solid var(--linha)}
+.tab td{padding:8px 10px 8px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+.dica{font-size:12.5px;color:var(--tinta-3)}
+code{font-family:var(--fm);background:var(--papel);padding:2px 5px;border-radius:5px;font-size:13px}
+a{color:var(--carmim)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="in">
+    <div>
+      <h1>Estabelecimentos parceiros</h1>
+      <p class="sub">CiadoChurras · cadastro e acesso dos responsáveis</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" id="linkAprovacoes" href="#">Aprovações</a>
+      <button class="btn" id="btnRecarregar" type="button">Recarregar</button>
+    </div>
+  </div>
+</header>
+
+<main class="in">
+  <div class="aviso erro" id="erro" hidden></div>
+  <div class="aviso ok" id="recado" hidden></div>
+
+  <div id="conteudo">
+    <div class="cartao" id="cxCadastro">
+      <h2>Cadastrar um estabelecimento</h2>
+      <form class="form" id="formNovo">
+        <div class="dupla">
+          <div class="campo"><label class="rot" for="fNome">Nome do estabelecimento</label><input id="fNome" maxlength="60" placeholder="Açougue do Zé" required></div>
+          <div class="campo"><label class="rot" for="fResp">Responsável</label><input id="fResp" maxlength="60" placeholder="José da Silva" required></div>
+        </div>
+        <div class="dupla">
+          <div class="campo"><label class="rot" for="fEmail">E-mail do responsável (será o login)</label><input id="fEmail" type="email" maxlength="120" placeholder="ze@acougue.com.br" required></div>
+          <div class="campo"><label class="rot" for="fTel">Telefone (opcional)</label><input id="fTel" maxlength="30" placeholder="(41) 90000-0000"></div>
+        </div>
+        <div class="dupla">
+          <div class="campo"><label class="rot" for="fBairro">Bairro ou unidade</label><input id="fBairro" maxlength="60" placeholder="Boqueirão"></div>
+          <div class="campo"><label class="rot" for="fCidade">Cidade</label><input id="fCidade" maxlength="60" value="Curitiba"></div>
+        </div>
+        <div class="campo">
+          <label class="rot" for="fSenha">Senha do responsável</label>
+          <div class="linha-senha">
+            <input id="fSenha" maxlength="72" required>
+            <button class="btn" type="button" id="btnSugerir">Sugerir outra</button>
+          </div>
+          <span class="dica">Ele pode trocar depois, dentro da própria área. Guardamos só o hash — nem eu nem você conseguimos ler a senha de volta.</span>
+        </div>
+        <div class="rodape-form">
+          <button class="btn btn-cheio" type="submit" id="btnCriar">Cadastrar e gerar o acesso</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="cartao" id="cxAcesso" hidden>
+      <h2>Acesso criado — envie para o responsável</h2>
+      <div class="msg" id="msgAcesso"></div>
+      <div class="acoes">
+        <button class="btn btn-ok" type="button" id="btnCopiar">Copiar mensagem</button>
+        <button class="btn" type="button" id="btnEmail">Abrir no meu e-mail</button>
+        <button class="btn" type="button" id="btnFechar">Fechar</button>
+      </div>
+      <p class="dica" style="margin-top:10px">A senha aparece só agora. Se fechar sem anotar, é só gerar uma nova no estabelecimento da lista.</p>
+    </div>
+
+    <h2 style="margin:24px 0 12px">Estabelecimentos <span id="qtd" class="dica"></span></h2>
+    <div id="lista"><div class="vazio">Carregando…</div></div>
+  </div>
+</main>
+
+<script>
+const chave = new URLSearchParams(location.hash.slice(1)).get("k") || "";
+const el = id => document.getElementById(id);
+let parceiros = [];
+
+const dia = s => s ? new Date(s).toLocaleDateString("pt-BR") : "—";
+function erro(m){ el("erro").textContent = m || ""; el("erro").hidden = !m; if (m) window.scrollTo({top:0,behavior:"smooth"}); }
+function recado(m){ el("recado").textContent = m || ""; el("recado").hidden = !m; if (m) setTimeout(() => el("recado").hidden = true, 6000); }
+
+async function api(caminho, opcoes) {
+  const o = Object.assign({ headers: {} }, opcoes || {});
+  o.headers["x-chave"] = chave;
+  if (o.body) o.headers["content-type"] = "application/json";
+  const r = await fetch("./api/admin/" + caminho, o);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.ok) throw new Error(j.erro || ("Falha na comunicação (" + r.status + ")."));
+  return j;
+}
+
+// ---------- senha sugerida: fácil de ditar por telefone ----------
+const PALAVRAS = ["brasa","picanha","costela","alcatra","carvao","espeto","cupim","maminha","fraldinha","churrasco","grelha","fogueira"];
+function sugerirSenha() {
+  const n = new Uint32Array(2);
+  crypto.getRandomValues(n);
+  return PALAVRAS[n[0] % PALAVRAS.length] + "-" + String(n[1] % 9000 + 1000);
+}
+el("btnSugerir").onclick = () => { el("fSenha").value = sugerirSenha(); };
+el("fSenha").value = sugerirSenha();
+
+// ---------- cadastro ----------
+el("formNovo").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  erro("");
+  const dados = {
+    nome: el("fNome").value.trim(), responsavel: el("fResp").value.trim(),
+    email: el("fEmail").value.trim().toLowerCase(), telefone: el("fTel").value.trim(),
+    bairro: el("fBairro").value.trim(), cidade: el("fCidade").value.trim(),
+    senha: el("fSenha").value
+  };
+  const b = el("btnCriar"), rotulo = b.textContent;
+  b.disabled = true; b.textContent = "Cadastrando…";
+  try {
+    const j = await api("parceiros/criar", { method: "POST", body: JSON.stringify(dados) });
+    mostrarAcesso(j.parceiro, dados.senha);
+    el("formNovo").reset();
+    el("fCidade").value = "Curitiba";
+    el("fSenha").value = sugerirSenha();
+    recado("Estabelecimento cadastrado. Agora é só mandar o acesso para o responsável.");
+    await carregar();
+  } catch (e) { erro(e.message); }
+  finally { b.disabled = false; b.textContent = rotulo; }
+});
+
+function textoDoAcesso(p, senha) {
+  const endereco = location.origin + "/parceiro.html";
+  return "Olá, " + p.responsavel + "!\n\n" +
+    "O " + p.nome + " já está cadastrado no CiadoChurras. " +
+    "Com esse acesso você cadastra os seus produtos e kits, e eles aparecem no app para quem procura carne na cidade.\n\n" +
+    "Endereço: " + endereco + "\n" +
+    "Login: " + p.email + "\n" +
+    "Senha: " + senha + "\n\n" +
+    "Assim que entrar, troque a senha no botão \"Trocar senha\". " +
+    "Os produtos que você cadastrar entram no app na hora.\n\n" +
+    "Qualquer dúvida é só chamar.";
+}
+
+function mostrarAcesso(p, senha) {
+  const texto = textoDoAcesso(p, senha);
+  el("msgAcesso").textContent = texto;
+  el("cxAcesso").hidden = false;
+  el("btnCopiar").onclick = async ev => {
+    const b = ev.currentTarget, r = b.textContent;
+    try { await navigator.clipboard.writeText(texto); b.textContent = "Copiado!"; }
+    catch (e) { b.textContent = "Selecione e copie acima"; }
+    setTimeout(() => b.textContent = r, 2500);
+  };
+  el("btnEmail").onclick = () => {
+    const assunto = "Seu acesso ao CiadoChurras";
+    location.href = "mailto:" + encodeURIComponent(p.email) +
+      "?subject=" + encodeURIComponent(assunto) + "&body=" + encodeURIComponent(texto);
+  };
+  el("btnFechar").onclick = () => { el("cxAcesso").hidden = true; el("msgAcesso").textContent = ""; };
+  el("cxAcesso").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+// ---------- lista ----------
+async function carregar() {
+  erro("");
+  try {
+    const j = await api("parceiros");
+    parceiros = j.parceiros || [];
+    desenhar();
+  } catch (e) {
+    erro(e.message);
+    el("lista").innerHTML = '<div class="vazio">Não consegui carregar os estabelecimentos.</div>';
+  }
+}
+
+function desenhar() {
+  const lista = el("lista");
+  lista.textContent = "";
+  el("qtd").textContent = parceiros.length ? "· " + parceiros.length : "";
+  if (!parceiros.length) {
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Nenhum estabelecimento cadastrado ainda.";
+    lista.appendChild(v);
+    return;
+  }
+  parceiros.forEach(p => lista.appendChild(cartaoParceiro(p)));
+}
+
+function cartaoParceiro(p) {
+  const c = document.createElement("div");
+  c.className = "par";
+
+  const topo = document.createElement("div");
+  topo.className = "par-topo";
+  const esq = document.createElement("div");
+  const nome = document.createElement("div");
+  nome.className = "par-nome";
+  nome.textContent = p.nome + (p.bairro ? " · " + p.bairro : "");
+  const info = document.createElement("div");
+  info.className = "par-info";
+  info.textContent = p.responsavel + " · " + p.email + (p.telefone ? " · " + p.telefone : "");
+  const info2 = document.createElement("div");
+  info2.className = "par-info";
+  info2.textContent = p.produtos_ativos + " de " + p.produtos + " produtos no ar · cadastrado em " +
+    dia(p.criado_em) + " · último acesso " + (p.ultimo_acesso ? dia(p.ultimo_acesso) : "nunca entrou");
+  esq.append(nome, info, info2);
+  const selo = document.createElement("span");
+  selo.className = "selo " + (p.status === "ativo" ? "ativo" : "suspenso");
+  selo.textContent = p.status === "ativo" ? "ativo" : "suspenso";
+  topo.append(esq, selo);
+  c.appendChild(topo);
+
+  const acoes = document.createElement("div");
+  acoes.className = "acoes";
+
+  const bProd = document.createElement("button");
+  bProd.className = "btn"; bProd.type = "button"; bProd.textContent = "Ver produtos";
+  const caixaProd = document.createElement("div");
+  caixaProd.hidden = true;
+  bProd.onclick = async () => {
+    if (!caixaProd.hidden) { caixaProd.hidden = true; bProd.textContent = "Ver produtos"; return; }
+    bProd.disabled = true;
+    try {
+      const j = await api("parceiros/produtos/" + p.id);
+      caixaProd.textContent = "";
+      caixaProd.appendChild(tabelaProdutos(j.produtos || []));
+      caixaProd.hidden = false;
+      bProd.textContent = "Esconder produtos";
+    } catch (e) { erro(e.message); }
+    finally { bProd.disabled = false; }
+  };
+
+  const bStatus = document.createElement("button");
+  bStatus.className = "btn"; bStatus.type = "button";
+  bStatus.textContent = p.status === "ativo" ? "Suspender" : "Reativar";
+  bStatus.onclick = async () => {
+    const novo = p.status === "ativo" ? "suspenso" : "ativo";
+    if (novo === "suspenso" && !confirm("Suspender " + p.nome + "? Os produtos dele saem do app na hora e ele não consegue entrar.")) return;
+    bStatus.disabled = true;
+    try {
+      await api("parceiros/status", { method: "POST", body: JSON.stringify({ id: p.id, status: novo }) });
+      recado(novo === "ativo" ? "Estabelecimento reativado." : "Estabelecimento suspenso e produtos fora do app.");
+      await carregar();
+    } catch (e) { erro(e.message); bStatus.disabled = false; }
+  };
+
+  const bSenha = document.createElement("button");
+  bSenha.className = "btn"; bSenha.type = "button"; bSenha.textContent = "Nova senha";
+  bSenha.onclick = async () => {
+    const senha = sugerirSenha();
+    if (!confirm("Gerar a senha " + senha + " para " + p.nome + "?\nA senha atual deixa de funcionar.")) return;
+    bSenha.disabled = true;
+    try {
+      const j = await api("parceiros/senha", { method: "POST", body: JSON.stringify({ id: p.id, senha }) });
+      mostrarAcesso(j.parceiro, senha);
+      recado("Senha trocada. Mande a nova para o responsável.");
+    } catch (e) { erro(e.message); }
+    finally { bSenha.disabled = false; }
+  };
+
+  const bExcluir = document.createElement("button");
+  bExcluir.className = "btn"; bExcluir.type = "button"; bExcluir.textContent = "Excluir";
+  bExcluir.onclick = async () => {
+    if (!confirm("Excluir " + p.nome + " e todos os produtos dele? Isso não tem volta.")) return;
+    bExcluir.disabled = true;
+    try {
+      await api("parceiros/excluir", { method: "POST", body: JSON.stringify({ id: p.id }) });
+      recado("Estabelecimento excluído.");
+      await carregar();
+    } catch (e) { erro(e.message); bExcluir.disabled = false; }
+  };
+
+  acoes.append(bProd, bStatus, bSenha, bExcluir);
+  c.append(acoes, caixaProd);
+  return c;
+}
+
+function tabelaProdutos(produtos) {
+  if (!produtos.length) {
+    const v = document.createElement("p");
+    v.className = "dica";
+    v.style.marginTop = "10px";
+    v.textContent = "Esse estabelecimento ainda não cadastrou produtos.";
+    return v;
+  }
+  const t = document.createElement("table");
+  t.className = "tab";
+  t.innerHTML = "<thead><tr><th>Produto</th><th>Categoria</th><th>Preço</th><th>No ar</th></tr></thead>";
+  const tb = document.createElement("tbody");
+  produtos.forEach(p => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    const n = document.createElement("div"); n.textContent = p.nome;
+    td1.appendChild(n);
+    if (p.descricao) {
+      const d = document.createElement("div");
+      d.className = "dica"; d.textContent = p.descricao;
+      td1.appendChild(d);
+    }
+    const td2 = document.createElement("td"); td2.textContent = p.categoria;
+    const td3 = document.createElement("td");
+    td3.textContent = "R$ " + Number(p.preco).toFixed(2).replace(".", ",") + (p.unidade === "kg" ? "/kg" : " /un");
+    const td4 = document.createElement("td"); td4.textContent = p.ativo === false ? "não" : "sim";
+    tr.append(td1, td2, td3, td4);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  return t;
+}
+
+el("btnRecarregar").onclick = carregar;
+el("linkAprovacoes").href = "./admin.html#k=" + encodeURIComponent(chave);
+
+if (!chave) {
+  el("conteudo").innerHTML =
+    '<div class="vazio">Abra esta página pelo link completo, com a chave no fim do endereço:<br><code>/parceiros.html#k=SUA_CHAVE</code></div>';
+} else {
+  carregar();
+}
+</script>
+</body>
+</html>

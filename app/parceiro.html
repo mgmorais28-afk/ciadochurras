@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Meus produtos · CiadoChurras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#A82C22">
+<style>
+:root{
+  --papel:#FAF8F4; --papel-2:#FFFFFF; --linha:#E2DCD2; --linha-forte:#CFC7B9;
+  --tinta:#1C1A16; --tinta-2:#5F594E; --tinta-3:#8A8377;
+  --carmim:#A82C22; --carmim-suave:#F3E2DF;
+  --verde:#2C6B4F; --verde-suave:#E2EDE6;
+  --mostarda:#9A6B12; --mostarda-suave:#F6EBD6;
+  --sombra:0 1px 2px rgba(28,26,22,.06), 0 8px 24px -16px rgba(28,26,22,.25);
+  --fb:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fm:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --papel:#151412; --papel-2:#1E1C19; --linha:#2E2B26; --linha-forte:#413C34;
+    --tinta:#F2EEE7; --tinta-2:#B5AEA2; --tinta-3:#8B8477;
+    --carmim:#E4685A; --carmim-suave:#3A211D;
+    --verde:#6FBF92; --verde-suave:#1C2C24;
+    --mostarda:#DCA63F; --mostarda-suave:#2E2413;
+    --sombra:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--fb);font-size:15px;line-height:1.45}
+header{border-bottom:1px solid var(--linha);background:var(--papel-2)}
+.in{max-width:900px;margin:0 auto;padding-inline:18px}
+header .in{padding-block:16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:19px;margin:0;letter-spacing:-.01em}
+h2{font-size:16px;margin:0 0 12px}
+.sub{margin:3px 0 0;font-size:13px;color:var(--tinta-2)}
+main{padding-block:22px 60px}
+.cartao{background:var(--papel-2);border:1px solid var(--linha);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:var(--sombra)}
+.entrar{max-width:420px;margin:40px auto}
+.btn{background:var(--papel-2);border:1px solid var(--linha-forte);border-radius:999px;padding:8px 15px;cursor:pointer;font:inherit;font-size:13.5px;color:inherit}
+.btn:hover{border-color:var(--tinta-3)}
+.btn-cheio{background:var(--carmim);border-color:var(--carmim);color:#fff}
+.btn-ok{background:var(--verde);border-color:var(--verde);color:#fff}
+.btn[disabled]{opacity:.55;cursor:progress}
+.form{display:flex;flex-direction:column;gap:14px}
+.campo{display:flex;flex-direction:column;gap:6px}
+.rot{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+input,select,textarea{padding:10px 12px;border:1px solid var(--linha-forte);border-radius:8px;background:var(--papel);color:var(--tinta);font:inherit;width:100%}
+textarea{resize:vertical;min-height:76px}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:620px){.dupla{grid-template-columns:1fr}}
+.rodape-form{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;align-items:center}
+.aviso{border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:14px}
+.aviso.erro{background:var(--carmim-suave);color:var(--carmim)}
+.aviso.ok{background:var(--verde-suave);color:var(--verde)}
+.aviso.dica{background:var(--mostarda-suave);color:var(--mostarda)}
+.vazio{text-align:center;color:var(--tinta-2);padding:34px 16px;border:1px dashed var(--linha-forte);border-radius:12px}
+.prod{border:1px solid var(--linha);border-radius:12px;padding:14px 16px;margin-bottom:10px;background:var(--papel-2);display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:start}
+.prod.desligado{opacity:.6}
+.prod-nome{font-weight:600}
+.prod-desc{font-size:13.5px;color:var(--tinta-2);margin-top:3px}
+.prod-meta{font-size:12.5px;color:var(--tinta-3);margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.preco{font-family:var(--fm);font-weight:600;font-size:17px;text-align:right;white-space:nowrap}
+.acoes{display:flex;gap:8px;flex-wrap:wrap;grid-column:1 / -1}
+.tag{border-radius:5px;padding:2px 7px;font-size:11.5px;font-weight:600;background:var(--papel);border:1px solid var(--linha-forte)}
+.tag.kit{background:var(--mostarda-suave);color:var(--mostarda);border-color:transparent}
+.dica{font-size:12.5px;color:var(--tinta-3)}
+a{color:var(--carmim)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="in">
+    <div>
+      <h1 id="titulo">CiadoChurras</h1>
+      <p class="sub" id="subtitulo">Área do estabelecimento</p>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="barraTopo" hidden>
+      <button class="btn" id="btnSenha" type="button">Trocar senha</button>
+      <button class="btn" id="btnSair" type="button">Sair</button>
+    </div>
+  </div>
+</header>
+
+<main class="in">
+  <div class="aviso erro" id="erro" hidden></div>
+  <div class="aviso ok" id="recado" hidden></div>
+
+  <!-- ---------------- entrar ---------------- -->
+  <div class="cartao entrar" id="cxLogin">
+    <h2>Entrar</h2>
+    <form class="form" id="formLogin">
+      <div class="campo"><label class="rot" for="lEmail">E-mail</label><input id="lEmail" type="email" autocomplete="username" required></div>
+      <div class="campo"><label class="rot" for="lSenha">Senha</label><input id="lSenha" type="password" autocomplete="current-password" required></div>
+      <div class="rodape-form"><button class="btn btn-cheio" type="submit" id="btnEntrar">Entrar</button></div>
+      <p class="dica">Recebeu o acesso por e-mail do administrador do clube. Se esqueceu a senha, peça uma nova para ele.</p>
+    </form>
+  </div>
+
+  <!-- ---------------- área do parceiro ---------------- -->
+  <div id="area" hidden>
+    <div class="cartao">
+      <h2 id="tituloForm">Cadastrar produto</h2>
+      <form class="form" id="formProduto">
+        <input type="hidden" id="pId">
+        <div class="dupla">
+          <div class="campo">
+            <label class="rot" for="pCategoria">Categoria</label>
+            <select id="pCategoria"></select>
+          </div>
+          <div class="campo">
+            <label class="rot" for="pNome">Nome do produto</label>
+            <input id="pNome" maxlength="120" placeholder="Picanha bovina peça" required>
+          </div>
+        </div>
+        <div class="campo" id="campoDescricao">
+          <label class="rot" for="pDescricao">Descrição</label>
+          <textarea id="pDescricao" maxlength="400" placeholder="Opcional: marca, origem, tipo de corte"></textarea>
+          <span class="dica" id="dicaDescricao">Opcional para produtos normais.</span>
+        </div>
+        <div class="dupla">
+          <div class="campo">
+            <label class="rot" for="pPreco">Preço</label>
+            <input id="pPreco" inputmode="decimal" placeholder="49,90" required>
+          </div>
+          <div class="campo">
+            <label class="rot" for="pUnidade">Vendido por</label>
+            <select id="pUnidade">
+              <option value="kg">quilo (R$/kg)</option>
+              <option value="un">unidade / kit</option>
+            </select>
+          </div>
+        </div>
+        <label style="display:flex;gap:8px;align-items:center;font-size:14px">
+          <input type="checkbox" id="pAtivo" checked style="width:auto"> aparecer no app
+        </label>
+        <div class="rodape-form">
+          <button class="btn" type="button" id="btnCancelar" hidden>Cancelar edição</button>
+          <button class="btn btn-cheio" type="submit" id="btnSalvar">Publicar no app</button>
+        </div>
+      </form>
+    </div>
+
+    <h2 style="margin:22px 0 12px">Meus produtos <span class="dica" id="qtdProdutos"></span></h2>
+    <div id="lista"><div class="vazio">Carregando…</div></div>
+  </div>
+
+  <!-- ---------------- trocar senha ---------------- -->
+  <div class="cartao" id="cxSenha" hidden>
+    <h2>Trocar senha</h2>
+    <form class="form" id="formSenha">
+      <div class="campo"><label class="rot" for="sAtual">Senha atual</label><input id="sAtual" type="password" autocomplete="current-password" required></div>
+      <div class="campo"><label class="rot" for="sNova">Senha nova</label><input id="sNova" type="password" autocomplete="new-password" minlength="6" required>
+        <span class="dica">Ao menos 6 caracteres.</span></div>
+      <div class="rodape-form">
+        <button class="btn" type="button" id="btnFecharSenha">Fechar</button>
+        <button class="btn btn-cheio" type="submit">Trocar</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<script>
+const el = id => document.getElementById(id);
+const CHAVE_TOKEN = "clube-parceiro-token";
+let token = "";
+try { token = localStorage.getItem(CHAVE_TOKEN) || ""; } catch (e) { token = ""; }
+let parceiro = null, produtos = [], categorias = ["Carne Bovina", "Carne Suína", "Aves", "Linguiças", "Ovinos", "Kits"];
+
+const brl = v => "R$ " + Number(v).toFixed(2).replace(".", ",");
+function erro(m){ el("erro").textContent = m || ""; el("erro").hidden = !m; if (m) window.scrollTo({top:0,behavior:"smooth"}); }
+function recado(m){ el("recado").textContent = m || ""; el("recado").hidden = !m; if (m) setTimeout(() => el("recado").hidden = true, 6000); }
+
+async function api(caminho, opcoes) {
+  const o = Object.assign({ headers: {} }, opcoes || {});
+  if (token) o.headers["x-parceiro"] = token;
+  if (o.body) o.headers["content-type"] = "application/json";
+  const r = await fetch("./api/parceiro/" + caminho, o);
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401 && caminho !== "login" && caminho !== "senha") { sair(true); throw new Error("Sessão expirada. Entre de novo."); }
+  if (!r.ok || !j.ok) throw new Error(j.erro || ("Falha na comunicação (" + r.status + ")."));
+  return j;
+}
+
+// ---------------- entrar e sair ----------------
+el("formLogin").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  erro("");
+  const b = el("btnEntrar"), rotulo = b.textContent;
+  b.disabled = true; b.textContent = "Entrando…";
+  try {
+    const j = await api("login", { method: "POST", body: JSON.stringify({ email: el("lEmail").value.trim(), senha: el("lSenha").value }) });
+    token = j.token;
+    try { localStorage.setItem(CHAVE_TOKEN, token); } catch (e) {}
+    el("lSenha").value = "";
+    aplicar(j.parceiro, j.categorias);
+    await carregar();
+  } catch (e) { erro(e.message); }
+  finally { b.disabled = false; b.textContent = rotulo; }
+});
+
+function sair(expirou) {
+  token = "";
+  try { localStorage.removeItem(CHAVE_TOKEN); } catch (e) {}
+  parceiro = null;
+  el("area").hidden = true;
+  el("cxSenha").hidden = true;
+  el("barraTopo").hidden = true;
+  el("cxLogin").hidden = false;
+  el("titulo").textContent = "CiadoChurras";
+  el("subtitulo").textContent = "Área do estabelecimento";
+  if (!expirou) recado("Você saiu. Até a próxima!");
+}
+el("btnSair").onclick = () => sair(false);
+
+function aplicar(p, cats) {
+  parceiro = p;
+  if (Array.isArray(cats) && cats.length) categorias = cats;
+  el("titulo").textContent = p.nome;
+  el("subtitulo").textContent = (p.bairro ? p.bairro + " · " : "") + (p.cidade || "") + " · " + p.email;
+  el("cxLogin").hidden = true;
+  el("area").hidden = false;
+  el("barraTopo").hidden = false;
+  const sel = el("pCategoria");
+  sel.textContent = "";
+  categorias.forEach(c => sel.add(new Option(c === "Kits" ? "Kit (combo de churrasco)" : c, c)));
+  ajustarKit();
+}
+
+// ---------------- formulário ----------------
+function ajustarKit() {
+  const kit = el("pCategoria").value === "Kits";
+  el("pDescricao").required = kit;
+  el("dicaDescricao").textContent = kit
+    ? "Obrigatório no kit: liste o que vai dentro, com as quantidades."
+    : "Opcional para produtos normais.";
+  el("pDescricao").placeholder = kit
+    ? "1 picanha de 1,2 kg + 1 pão de alho + 1 pack de cerveja com 6"
+    : "Opcional: marca, origem, tipo de corte";
+  el("pNome").placeholder = kit ? "Kit churrasco para 6 pessoas" : "Picanha bovina peça";
+  if (kit && !el("pId").value) el("pUnidade").value = "un";
+}
+el("pCategoria").addEventListener("change", ajustarKit);
+
+function limparForm() {
+  el("formProduto").reset();
+  el("pId").value = "";
+  el("pAtivo").checked = true;
+  el("tituloForm").textContent = "Cadastrar produto";
+  el("btnSalvar").textContent = "Publicar no app";
+  el("btnCancelar").hidden = true;
+  ajustarKit();
+}
+el("btnCancelar").onclick = limparForm;
+
+el("formProduto").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  erro("");
+  const dados = {
+    id: el("pId").value || undefined,
+    nome: el("pNome").value.trim(),
+    categoria: el("pCategoria").value,
+    descricao: el("pDescricao").value.trim(),
+    preco: el("pPreco").value,
+    unidade: el("pUnidade").value,
+    ativo: el("pAtivo").checked
+  };
+  const b = el("btnSalvar"), rotulo = b.textContent;
+  b.disabled = true; b.textContent = "Publicando…";
+  try {
+    const j = await api("produto", { method: "POST", body: JSON.stringify(dados) });
+    produtos = j.produtos || [];
+    desenhar();
+    recado(dados.id ? "Produto atualizado — já está no app." : "Produto publicado — já aparece no app.");
+    limparForm();
+  } catch (e) { erro(e.message); }
+  finally { b.disabled = false; b.textContent = rotulo; }
+});
+
+function editar(p) {
+  el("pId").value = p.id;
+  el("pCategoria").value = p.categoria;
+  el("pNome").value = p.nome;
+  el("pDescricao").value = p.descricao || "";
+  el("pPreco").value = String(p.preco).replace(".", ",");
+  el("pUnidade").value = p.unidade;
+  el("pAtivo").checked = p.ativo !== false;
+  el("tituloForm").textContent = "Editar produto";
+  el("btnSalvar").textContent = "Salvar alteração";
+  el("btnCancelar").hidden = false;
+  ajustarKit();
+  el("formProduto").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// ---------------- lista ----------------
+async function carregar() {
+  try {
+    const j = await api("eu");
+    aplicar(j.parceiro, j.categorias);
+    produtos = j.produtos || [];
+    desenhar();
+  } catch (e) {
+    if (token) erro(e.message);
+  }
+}
+
+function desenhar() {
+  const lista = el("lista");
+  lista.textContent = "";
+  const ativos = produtos.filter(p => p.ativo !== false).length;
+  el("qtdProdutos").textContent = produtos.length ? "· " + ativos + " no ar de " + produtos.length : "";
+  if (!produtos.length) {
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Você ainda não cadastrou produtos. Use o formulário acima — eles entram no app na hora.";
+    lista.appendChild(v);
+    return;
+  }
+  produtos.slice().sort((a, b) => String(a.categoria + a.nome).localeCompare(String(b.categoria + b.nome), "pt-BR"))
+    .forEach(p => lista.appendChild(cartaoProduto(p)));
+}
+
+function cartaoProduto(p) {
+  const c = document.createElement("div");
+  c.className = "prod" + (p.ativo === false ? " desligado" : "");
+
+  const esq = document.createElement("div");
+  const nome = document.createElement("div");
+  nome.className = "prod-nome"; nome.textContent = p.nome;
+  esq.appendChild(nome);
+  if (p.descricao) {
+    const d = document.createElement("div");
+    d.className = "prod-desc"; d.textContent = p.descricao;
+    esq.appendChild(d);
+  }
+  const meta = document.createElement("div");
+  meta.className = "prod-meta";
+  const tag = document.createElement("span");
+  tag.className = "tag" + (p.categoria === "Kits" ? " kit" : "");
+  tag.textContent = p.categoria === "Kits" ? "kit" : p.categoria;
+  meta.appendChild(tag);
+  if (p.ativo === false) {
+    const fora = document.createElement("span");
+    fora.textContent = "fora do app";
+    meta.appendChild(fora);
+  }
+  esq.appendChild(meta);
+
+  const dir = document.createElement("div");
+  dir.className = "preco";
+  dir.textContent = brl(p.preco) + (p.unidade === "kg" ? "/kg" : "");
+
+  const acoes = document.createElement("div");
+  acoes.className = "acoes";
+  const bEdit = document.createElement("button");
+  bEdit.className = "btn"; bEdit.type = "button"; bEdit.textContent = "Editar";
+  bEdit.onclick = () => editar(p);
+
+  const bAtivo = document.createElement("button");
+  bAtivo.className = "btn"; bAtivo.type = "button";
+  bAtivo.textContent = p.ativo === false ? "Colocar no app" : "Tirar do app";
+  bAtivo.onclick = async () => {
+    bAtivo.disabled = true;
+    try {
+      const j = await api("produto", { method: "POST", body: JSON.stringify({
+        id: p.id, nome: p.nome, categoria: p.categoria, descricao: p.descricao || "",
+        preco: p.preco, unidade: p.unidade, ativo: p.ativo === false
+      })});
+      produtos = j.produtos || [];
+      desenhar();
+      recado(p.ativo === false ? "Produto de volta ao app." : "Produto tirado do app.");
+    } catch (e) { erro(e.message); bAtivo.disabled = false; }
+  };
+
+  const bRem = document.createElement("button");
+  bRem.className = "btn"; bRem.type = "button"; bRem.textContent = "Excluir";
+  bRem.onclick = async () => {
+    if (!confirm("Excluir \"" + p.nome + "\"?")) return;
+    bRem.disabled = true;
+    try {
+      const j = await api("produto/remover", { method: "POST", body: JSON.stringify({ id: p.id }) });
+      produtos = j.produtos || [];
+      desenhar();
+      recado("Produto excluído.");
+    } catch (e) { erro(e.message); bRem.disabled = false; }
+  };
+
+  acoes.append(bEdit, bAtivo, bRem);
+  c.append(esq, dir, acoes);
+  return c;
+}
+
+// ---------------- senha ----------------
+el("btnSenha").onclick = () => {
+  el("cxSenha").hidden = false;
+  el("cxSenha").scrollIntoView({ behavior: "smooth", block: "center" });
+};
+el("btnFecharSenha").onclick = () => { el("cxSenha").hidden = true; el("formSenha").reset(); };
+el("formSenha").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  erro("");
+  try {
+    await api("senha", { method: "POST", body: JSON.stringify({ atual: el("sAtual").value, nova: el("sNova").value }) });
+    el("formSenha").reset();
+    el("cxSenha").hidden = true;
+    recado("Senha trocada. Use a nova da próxima vez que entrar.");
+  } catch (e) { erro(e.message); }
+});
+
+if (token) carregar();
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Aprovações · CiadoChurras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#A82C22">
+<style>
+:root{
+  --papel:#FAF8F4; --papel-2:#FFFFFF; --linha:#E2DCD2; --linha-forte:#CFC7B9;
+  --tinta:#1C1A16; --tinta-2:#5F594E; --tinta-3:#8A8377;
+  --carmim:#A82C22; --carmim-suave:#F3E2DF;
+  --verde:#2C6B4F; --verde-suave:#E2EDE6;
+  --mostarda:#9A6B12; --mostarda-suave:#F6EBD6;
+  --sombra:0 1px 2px rgba(28,26,22,.06), 0 8px 24px -16px rgba(28,26,22,.25);
+  --fb:system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fm:ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --papel:#151412; --papel-2:#1E1C19; --linha:#2E2B26; --linha-forte:#413C34;
+    --tinta:#F2EEE7; --tinta-2:#B5AEA2; --tinta-3:#8B8477;
+    --carmim:#E4685A; --carmim-suave:#3A211D;
+    --verde:#6FBF92; --verde-suave:#1C2C24;
+    --mostarda:#DCA63F; --mostarda-suave:#2E2413;
+    --sombra:0 1px 2px rgba(0,0,0,.5), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--fb);font-size:15px;line-height:1.45}
+header{border-bottom:1px solid var(--linha);background:var(--papel-2)}
+.in{max-width:900px;margin:0 auto;padding-inline:18px}
+header .in{padding-block:16px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{font-size:19px;margin:0;letter-spacing:-.01em}
+.sub{margin:3px 0 0;font-size:13px;color:var(--tinta-2)}
+main{padding-block:20px 60px}
+.abas{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.btn{background:var(--papel-2);border:1px solid var(--linha-forte);border-radius:999px;padding:7px 14px;cursor:pointer;font:inherit;font-size:13.5px;color:inherit}
+.btn:hover{border-color:var(--tinta-3)}
+.btn[aria-pressed="true"]{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.btn-ok{background:var(--verde);border-color:var(--verde);color:#fff}
+.btn-nao{background:var(--papel-2);border-color:var(--carmim);color:var(--carmim)}
+.btn[disabled]{opacity:.55;cursor:progress}
+.cartao{background:var(--papel-2);border:1px solid var(--linha);border-radius:12px;padding:16px;margin-bottom:14px;box-shadow:var(--sombra);display:grid;grid-template-columns:200px 1fr;gap:16px}
+@media (max-width:640px){.cartao{grid-template-columns:1fr}}
+.foto{border:1px solid var(--linha);border-radius:10px;overflow:hidden;background:var(--papel);display:flex;align-items:center;justify-content:center;min-height:130px}
+.foto img{width:100%;display:block;cursor:zoom-in}
+.foto .carregando{font-size:12.5px;color:var(--tinta-3);padding:12px;text-align:center}
+.et{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600}
+.nm{font-weight:600;margin:3px 0 6px;line-height:1.3}
+.linha-info{font-size:13.5px;color:var(--tinta-2)}
+.precos{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0;font-family:var(--fm)}
+.precos div span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-3);font-family:var(--fb);font-weight:600;margin-bottom:2px}
+.precos b{font-size:18px;font-weight:600}
+.novo{color:var(--verde)}
+.acoes{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.obs{background:var(--mostarda-suave);color:var(--mostarda);border-radius:8px;padding:8px 10px;font-size:13px;margin-top:8px}
+.aviso{border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:14px}
+.aviso.erro{background:var(--carmim-suave);color:var(--carmim)}
+.aviso.ok{background:var(--verde-suave);color:var(--verde)}
+.vazio{text-align:center;color:var(--tinta-2);padding:40px 16px;border:1px dashed var(--linha-forte);border-radius:12px}
+.tab{width:100%;border-collapse:collapse;font-size:14px;background:var(--papel-2);border:1px solid var(--linha);border-radius:12px;overflow:hidden}
+.tab th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-3);padding:10px 12px;border-bottom:1px solid var(--linha)}
+.tab td{padding:10px 12px;border-bottom:1px solid var(--linha);vertical-align:top}
+.tab tr:last-child td{border-bottom:none}
+.rolagem{overflow-x:auto}
+dialog{border:none;padding:0;background:transparent;max-width:min(94vw,900px)}
+dialog::backdrop{background:rgba(20,18,14,.7)}
+dialog img{max-width:100%;max-height:86vh;border-radius:10px;display:block}
+.pill{display:inline-block;background:var(--carmim);color:#fff;border-radius:999px;padding:2px 9px;font-size:12.5px;font-weight:600;margin-left:6px}
+code{font-family:var(--fm);background:var(--papel);padding:2px 5px;border-radius:5px;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="in">
+    <div>
+      <h1>Aprovações <span class="pill" id="qtd" hidden>0</span></h1>
+      <p class="sub">CiadoChurras · correções enviadas pelo app</p>
+    </div>
+    <div class="abas">
+      <button class="btn" id="abaPend" type="button" aria-pressed="true">Pendentes</button>
+      <button class="btn" id="abaPub" type="button" aria-pressed="false">Publicados</button>
+      <button class="btn" id="btnRecarregar" type="button">Recarregar</button>
+    </div>
+  </div>
+</header>
+
+<main class="in">
+  <div class="aviso erro" id="erro" hidden></div>
+  <div class="aviso ok" id="recado" hidden></div>
+  <div id="conteudo"><div class="vazio">Carregando…</div></div>
+</main>
+
+<dialog id="lupa"><img id="lupaImg" alt="Foto da etiqueta"></dialog>
+
+<script>
+const chave = new URLSearchParams(location.hash.slice(1)).get("k") || "";
+const el = id => document.getElementById(id);
+const conteudo = el("conteudo");
+let aba = "pendentes";
+let dados = { pendentes: [], ajustes: { correcoes: [], novos: [] } };
+
+const brl = v => "R$ " + Number(v).toFixed(2).replace(".", ",");
+const dia = d => String(d || "").slice(8, 10) + "/" + String(d || "").slice(5, 7) + "/" + String(d || "").slice(0, 4);
+
+function erro(msg) { el("erro").textContent = msg || ""; el("erro").hidden = !msg; }
+function recado(msg) {
+  el("recado").textContent = msg || ""; el("recado").hidden = !msg;
+  if (msg) setTimeout(() => { el("recado").hidden = true; }, 6000);
+}
+
+async function api(caminho, opcoes) {
+  const o = Object.assign({ headers: {} }, opcoes || {});
+  o.headers["x-chave"] = chave;
+  if (o.body) o.headers["content-type"] = "application/json";
+  const r = await fetch("./api/admin/" + caminho, o);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.ok) throw new Error(j.erro || ("Falha na comunicação (" + r.status + ")."));
+  return j;
+}
+
+async function carregar() {
+  erro("");
+  conteudo.innerHTML = '<div class="vazio">Carregando…</div>';
+  try {
+    dados = await api("pendentes");
+    const n = dados.pendentes.length;
+    el("qtd").textContent = n; el("qtd").hidden = !n;
+    document.title = (n ? "(" + n + ") " : "") + "Aprovações · CiadoChurras";
+    desenhar();
+  } catch (e) {
+    conteudo.textContent = "";
+    erro(e.message);
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Não consegui carregar os envios.";
+    conteudo.appendChild(v);
+  }
+}
+
+function desenhar() {
+  conteudo.textContent = "";
+  el("abaPend").setAttribute("aria-pressed", aba === "pendentes");
+  el("abaPub").setAttribute("aria-pressed", aba === "publicados");
+  if (aba === "pendentes") return desenharPendentes();
+  desenharPublicados();
+}
+
+function desenharPendentes() {
+  if (!dados.pendentes.length) {
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Nenhum envio esperando aprovação.";
+    conteudo.appendChild(v);
+    return;
+  }
+  dados.pendentes.forEach(e => conteudo.appendChild(cartao(e)));
+}
+
+function cartao(e) {
+  const c = document.createElement("div");
+  c.className = "cartao";
+
+  const foto = document.createElement("div");
+  foto.className = "foto";
+  const carregando = document.createElement("div");
+  carregando.className = "carregando";
+  carregando.textContent = "carregando foto…";
+  foto.appendChild(carregando);
+  mostrarFoto(e, foto);
+
+  const dir = document.createElement("div");
+  const et = document.createElement("div");
+  et.className = "et";
+  et.textContent = (e.tipo === "correcao" ? "Correção de preço" : "Produto novo") + " · " + (e.categoria || "");
+  const nm = document.createElement("div");
+  nm.className = "nm"; nm.textContent = e.produto;
+  const onde = document.createElement("div");
+  onde.className = "linha-info";
+  onde.textContent = (e.loja || "").replace(" | ", " · ") + (e.sku ? " · SKU " + e.sku : "");
+  dir.append(et, nm, onde);
+
+  const precos = document.createElement("div");
+  precos.className = "precos";
+  if (typeof e.preco_site === "number") precos.appendChild(bloco("no app hoje", brl(e.preco_site), false));
+  precos.appendChild(bloco("etiqueta", brl(e.preco) + (e.unidade === "kg" ? "/kg" : " /un"), true));
+  if (typeof e.preco_site === "number" && e.preco_site > 0) {
+    const dif = Math.round((e.preco / e.preco_site - 1) * 100);
+    precos.appendChild(bloco("diferença", (dif > 0 ? "+" : "") + dif + "%", false));
+  }
+  dir.appendChild(precos);
+
+  const meta = document.createElement("div");
+  meta.className = "linha-info";
+  meta.textContent = "Etiqueta de " + dia(e.data) + " · enviado " + dia((e.criado_em || "").slice(0, 10)) +
+    (e.por ? " por " + e.por : " sem nome") + (e.origem ? " · origem " + e.origem : "");
+  dir.appendChild(meta);
+
+  if (e.obs) {
+    const o = document.createElement("div");
+    o.className = "obs"; o.textContent = e.obs;
+    dir.appendChild(o);
+  }
+
+  const acoes = document.createElement("div");
+  acoes.className = "acoes";
+  const bOk = document.createElement("button");
+  bOk.className = "btn btn-ok"; bOk.type = "button"; bOk.textContent = "Aprovar e publicar";
+  const bNao = document.createElement("button");
+  bNao.className = "btn btn-nao"; bNao.type = "button"; bNao.textContent = "Recusar";
+  bOk.onclick = () => decidir(e, "aprovar", [bOk, bNao]);
+  bNao.onclick = () => {
+    const motivo = prompt("Motivo da recusa (opcional, fica só no histórico):", "");
+    if (motivo === null) return;
+    decidir(e, "recusar", [bOk, bNao], motivo);
+  };
+  acoes.append(bOk, bNao);
+  dir.appendChild(acoes);
+
+  c.append(foto, dir);
+  return c;
+}
+
+function bloco(rotulo, valor, destaque) {
+  const d = document.createElement("div");
+  const s = document.createElement("span"); s.textContent = rotulo;
+  const b = document.createElement("b"); b.textContent = valor;
+  if (destaque) b.className = "novo";
+  d.append(s, b);
+  return d;
+}
+
+async function mostrarFoto(e, caixa) {
+  const nome = String(e.foto || "").split("/").pop();
+  if (!nome) { caixa.textContent = "sem foto"; return; }
+  try {
+    const r = await fetch("./fotos/" + nome, { headers: { "x-chave": chave } });
+    if (!r.ok) throw new Error("não carregou");
+    const url = URL.createObjectURL(await r.blob());
+    caixa.textContent = "";
+    const img = document.createElement("img");
+    img.src = url; img.alt = "Etiqueta de " + e.produto;
+    img.onclick = () => { el("lupaImg").src = url; el("lupa").showModal(); };
+    caixa.appendChild(img);
+  } catch (err) {
+    caixa.textContent = "";
+    const p = document.createElement("div");
+    p.className = "carregando"; p.textContent = "não consegui carregar a foto";
+    caixa.appendChild(p);
+  }
+}
+
+async function decidir(e, acao, botoes, motivo) {
+  botoes.forEach(b => b.disabled = true);
+  erro("");
+  try {
+    await api(acao, { method: "POST", body: JSON.stringify({ id: e.id, motivo: motivo || "" }) });
+    recado(acao === "aprovar"
+      ? "Aprovado. Já está no app — quem abrir agora vê o preço corrigido."
+      : "Envio recusado e foto apagada.");
+    await carregar();
+  } catch (err) {
+    erro(err.message);
+    botoes.forEach(b => b.disabled = false);
+  }
+}
+
+function desenharPublicados() {
+  const aj = dados.ajustes || { correcoes: [], novos: [] };
+  const itens = [].concat(
+    (aj.correcoes || []).map(x => Object.assign({ tipo: "correção" }, x)),
+    (aj.novos || []).map(x => Object.assign({ tipo: "produto novo" }, x))
+  ).sort((a, b) => String(b.aprovado_em).localeCompare(String(a.aprovado_em)));
+
+  if (!itens.length) {
+    const v = document.createElement("div");
+    v.className = "vazio";
+    v.textContent = "Nada publicado ainda. O que você aprovar aparece aqui.";
+    conteudo.appendChild(v);
+    return;
+  }
+
+  const rol = document.createElement("div");
+  rol.className = "rolagem";
+  const t = document.createElement("table");
+  t.className = "tab";
+  t.innerHTML = "<thead><tr><th>Produto e loja</th><th>Preço</th><th>Etiqueta</th><th></th></tr></thead>";
+  const tb = document.createElement("tbody");
+  itens.forEach(x => {
+    const tr = document.createElement("tr");
+    const td1 = document.createElement("td");
+    const l1 = document.createElement("div"); l1.style.fontWeight = "500"; l1.textContent = x.produto;
+    const l2 = document.createElement("div");
+    l2.style.color = "var(--tinta-3)"; l2.style.fontSize = "12.5px";
+    l2.textContent = x.tipo + " · " + String(x.loja || "").replace(" | ", " · ") + (x.por ? " · " + x.por : "");
+    td1.append(l1, l2);
+    const td2 = document.createElement("td");
+    td2.textContent = brl(x.preco) + (x.unidade === "kg" ? "/kg" : " /un");
+    const td3 = document.createElement("td");
+    td3.textContent = dia(x.data);
+    const td4 = document.createElement("td");
+    const b = document.createElement("button");
+    b.className = "btn"; b.type = "button"; b.textContent = "Remover";
+    b.onclick = async () => {
+      if (!confirm("Tirar esse ajuste do app? O preço volta ao que veio da coleta.")) return;
+      b.disabled = true;
+      try { await api("remover", { method: "POST", body: JSON.stringify({ id: x.id }) }); recado("Ajuste removido do app."); await carregar(); }
+      catch (err) { erro(err.message); b.disabled = false; }
+    };
+    td4.appendChild(b);
+    tr.append(td1, td2, td3, td4);
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb); rol.appendChild(t); conteudo.appendChild(rol);
+}
+
+el("abaPend").onclick = () => { aba = "pendentes"; desenhar(); };
+el("abaPub").onclick = () => { aba = "publicados"; desenhar(); };
+el("btnRecarregar").onclick = carregar;
+el("lupa").onclick = () => el("lupa").close();
+
+if (!chave) {
+  conteudo.textContent = "";
+  const v = document.createElement("div");
+  v.className = "vazio";
+  v.innerHTML = "Abra este painel pelo link completo, com a chave no fim do endereço:<br><code>/admin.html#k=SUA_CHAVE</code>";
+  conteudo.appendChild(v);
+} else {
+  carregar();
+}
+</script>
+</body>
+</html>
